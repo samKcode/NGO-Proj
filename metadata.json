@@ -1,0 +1,6 @@
+{
+  "name": "KCTF NGO - Korankye Community Transformation Foundation",
+  "description": "Professional environmental NGO website specializing in Clean Water, Sanitation, and Community Development, submitted by Samuel Korankye for Takoradi Technical University Computer Science.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

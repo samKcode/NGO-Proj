@@ -1,0 +1,1141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Donate & Support - Korankye Community Transformation Foundation</title>
+  <!-- Google Fonts Connection -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  
+  <style>
+    /* CSS VARIABLES & RESET */
+    :root {
+      --primary: #059669;
+      --primary-hover: #047857;
+      --primary-light: #ecfdf5;
+      --secondary: #2563eb;
+      --secondary-light: #eff6ff;
+      --secondary-hover: #1d4ed8;
+      --dark: #0f172a;
+      --dark-light: #1e293b;
+      --slate: #475569;
+      --slate-light: #94a3b8;
+      --light: #f8fafc;
+      --border: #e2e8f0;
+      --white: #ffffff;
+      
+      --font-display: "Space Grotesk", sans-serif;
+      --font-sans: "Inter", sans-serif;
+      --font-mono: "JetBrains Mono", monospace;
+      
+      --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+      --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+      --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+      --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+      --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: var(--font-sans);
+      background-color: var(--light);
+      color: var(--dark);
+      line-height: 1.6;
+      overflow-x: hidden;
+      scroll-behavior: smooth;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    ul, ol {
+      list-style: none;
+    }
+
+    img {
+      max-width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    /* MINI ANIMS */
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); opacity: 1; }
+      50% { transform: scale(1.05); opacity: 0.82; }
+    }
+    
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ACADEMIC BANNER STYLE */
+    .academic-banner {
+      background-color: var(--dark);
+      color: #cbd5e1;
+      font-family: var(--font-mono);
+      font-size: 11px;
+      padding: 8px 0;
+      border-bottom: 1px solid #334155;
+    }
+
+    .academic-banner .container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .academic-meta {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .academic-meta span {
+      background-color: #1e293b;
+      padding: 2px 8px;
+      border-radius: 4px;
+      border: 1px solid #475569;
+      color: #38bdf8;
+    }
+
+    .index-no-badge {
+      background-color: #064e3b !important;
+      color: #34d399 !important;
+      border-color: #047857 !important;
+      font-weight: bold;
+    }
+
+    /* HEADER & MAIN NAVIGATION BAR */
+    .main-header {
+      background-color: var(--white);
+      border-bottom: 1px solid var(--border);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .nav-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      height: 80px;
+    }
+
+    .logo-block {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .logo-img {
+      width: 46px;
+      height: 46px;
+      border-radius: 10px;
+      object-fit: cover;
+      border: 1px solid var(--primary-light);
+      box-shadow: inset 0 2px 4px rgba(0,0,0,0.06);
+    }
+
+    .logo-text h2 {
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: 18px;
+      color: var(--dark);
+      letter-spacing: -0.025em;
+      line-height: 1.1;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .logo-text h2::after {
+      content: "";
+      width: 6px;
+      height: 6px;
+      background-color: var(--primary);
+      border-radius: 50%;
+      display: inline-block;
+    }
+
+    .logo-subtitle {
+      font-size: 10px;
+      color: var(--slate);
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-top: 1px;
+    }
+
+    /* Desktop Links list */
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .nav-item {
+      font-size: 13.5px;
+      font-weight: 500;
+      color: var(--slate);
+      padding: 10px 14px;
+      border-radius: 8px;
+      transition: var(--transition);
+    }
+
+    .nav-item:hover {
+      color: var(--primary);
+      background-color: var(--light);
+    }
+
+    .nav-item.active {
+      color: var(--primary-hover);
+      background-color: var(--primary-light);
+      font-weight: 600;
+    }
+
+    /* Support Button in header */
+    .nav-btn {
+      background-color: var(--primary);
+      color: var(--white);
+      font-weight: 600;
+      padding: 10px 18px;
+      border-radius: 8px;
+      margin-left: 10px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      transition: var(--transition);
+      box-shadow: var(--shadow-sm);
+    }
+
+    .nav-btn:hover {
+      background-color: var(--primary-hover);
+      transform: translateY(-1px);
+    }
+
+    .support-icon {
+      animation: pulse 2s infinite ease-in-out;
+    }
+
+    /* Responsive navigation toggle trick using pure CSS */
+    .nav-toggle {
+      display: none;
+    }
+
+    .nav-toggle-label {
+      display: none;
+      flex-direction: column;
+      justify-content: space-between;
+      width: 24px;
+      height: 18px;
+      cursor: pointer;
+    }
+
+    .nav-toggle-label span {
+      display: block;
+      height: 2.5px;
+      width: 100%;
+      background-color: var(--dark);
+      border-radius: 2px;
+      transition: var(--transition);
+    }
+
+    /* PAGE HEADER Section */
+    .page-header-section {
+      background-color: var(--white);
+      border-bottom: 1px solid var(--border);
+      padding: 60px 0;
+      animation: fadeInUp 0.5s ease-out;
+    }
+
+    .p-header-container {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      align-items: center;
+      text-align: center;
+    }
+
+    .page-title {
+      font-family: var(--font-display);
+      font-size: 40px;
+      font-weight: 700;
+      color: var(--dark);
+      letter-spacing: -0.027em;
+    }
+
+    .page-subtitle {
+      font-size: 16px;
+      color: var(--slate);
+      max-width: 600px;
+    }
+
+    .section-title-small {
+      font-size: 13px;
+      text-transform: uppercase;
+      font-family: var(--font-mono);
+      color: var(--primary);
+      font-weight: 600;
+      letter-spacing: 0.05em;
+    }
+
+    .section-divider {
+      width: 60px;
+      height: 4px;
+      background-color: var(--primary);
+      border-radius: 2px;
+      margin: 4px auto 0 auto;
+    }
+
+    /* SPLIT GRID DONATION CONTENT & FORM */
+    .donation-layout-section {
+      padding: 80px 0;
+    }
+
+    .split-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.2fr;
+      gap: 48px;
+      align-items: start;
+    }
+
+    .donation-pitch-panel {
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+    }
+
+    .pitch-heading {
+      font-family: var(--font-display);
+      font-size: 26px;
+      font-weight: bold;
+      color: var(--dark);
+    }
+
+    .pitch-desc {
+      font-size: 14.5px;
+      color: var(--slate);
+      line-height: 1.6;
+    }
+
+    /* IMPACT TIERS ROW CARDS */
+    .impact-brackets {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      margin-top: 10px;
+    }
+
+    .bracket-card {
+      background-color: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .bracket-price {
+      font-family: var(--font-display);
+      font-size: 22px;
+      font-weight: 700;
+      color: var(--primary-hover);
+      background-color: var(--primary-light);
+      padding: 4px 12px;
+      border-radius: 8px;
+      min-width: 90px;
+      text-align: center;
+    }
+
+    .bracket-detail-box {
+      flex-grow: 1;
+    }
+
+    .bracket-title {
+      font-family: var(--font-sans);
+      font-weight: bold;
+      font-size: 14px;
+      color: var(--dark);
+    }
+
+    .bracket-desc {
+      font-size: 12px;
+      color: var(--slate);
+      margin-top: 2px;
+    }
+
+    /* THE PROFESSIONAL DONATION CONTAINER */
+    .donation-form-card {
+      background-color: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      box-shadow: var(--shadow-lg);
+      padding: 40px;
+    }
+
+    .form-header-box {
+      border-bottom: 1.5px dashed var(--border);
+      padding-bottom: 20px;
+      margin-bottom: 24px;
+    }
+
+    .form-inner-title {
+      font-family: var(--font-display);
+      font-size: 20px;
+      font-weight: bold;
+      color: var(--dark);
+    }
+
+    .form-inner-subtitle {
+      font-size: 12.5px;
+      color: var(--slate);
+    }
+
+    .form-fields-stack {
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+    }
+
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+
+    .field-group {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .field-label {
+      font-size: 12.5px;
+      font-weight: bold;
+      color: var(--dark-light);
+    }
+
+    /* Pure CSS radio buttons for choosing amount preset */
+    .preset-row-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr) 1.5fr;
+      gap: 10px;
+    }
+
+    .preset-option-node {
+      position: relative;
+    }
+
+    .preset-option-node input {
+      position: absolute;
+      opacity: 0;
+      width: 0;
+      height: 0;
+    }
+
+    .preset-custom-box {
+      border: 1.5px solid var(--border);
+      padding: 12px 6px;
+      text-align: center;
+      font-size: 13.5px;
+      font-family: var(--font-display);
+      font-weight: bold;
+      color: var(--slate);
+      background-color: var(--light);
+      border-radius: 8px;
+      cursor: pointer;
+      display: block;
+      transition: var(--transition);
+    }
+
+    .preset-option-node input:checked + .preset-custom-box {
+      border-color: var(--primary);
+      background-color: var(--primary-light);
+      color: var(--primary-hover);
+    }
+
+    /* Custom Input Amount fields */
+    .preset-custom-box input[type="text"] {
+      width: 100%;
+      border: none;
+      background: none;
+      outline: none;
+      text-align: center;
+      font-size: 11.5px;
+      font-weight: bold;
+      color: var(--dark);
+    }
+
+    .input-control {
+      width: 100%;
+      background-color: var(--light);
+      border: 1px solid var(--border);
+      padding: 10.5px 14px;
+      font-family: var(--font-sans);
+      font-size: 13.5px;
+      color: var(--dark);
+      border-radius: 8px;
+      outline: none;
+      transition: var(--transition);
+    }
+
+    .input-control:focus {
+      background-color: var(--white);
+      border-color: var(--primary);
+      box-shadow: 0 0 0 3px rgba(5, 150, 105, 0.12);
+    }
+
+    /* Frequency select radios */
+    .frequency-radio-wrapper {
+      display: flex;
+      gap: 12px;
+      background-color: var(--light);
+      padding: 4px;
+      border-radius: 10px;
+      border: 1px solid var(--border);
+    }
+
+    .frequency-option-node {
+      flex: 1;
+      position: relative;
+    }
+
+    .frequency-option-node input {
+      position: absolute;
+      opacity: 0;
+      width: 0;
+      height: 0;
+    }
+
+    .frequency-custom-box {
+      border: none;
+      padding: 8px;
+      text-align: center;
+      font-size: 12.5px;
+      font-weight: 500;
+      color: var(--slate);
+      background-color: transparent;
+      border-radius: 8px;
+      cursor: pointer;
+      display: block;
+      transition: var(--transition);
+    }
+
+    .frequency-option-node input:checked + .frequency-custom-box {
+      background-color: var(--white);
+      color: var(--primary-hover);
+      font-weight: bold;
+      box-shadow: var(--shadow-sm);
+    }
+
+    /* Safe badge block */
+    .financial-security-seal {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 8px;
+      font-family: var(--font-mono);
+      font-size: 10.5px;
+      color: var(--primary);
+      background-color: var(--primary-light);
+      border-radius: 8px;
+      padding: 8px;
+      margin-top: 8px;
+      font-weight: 600;
+    }
+
+    /* Submit donation standard trigger */
+    .form-submit-btn {
+      width: 100%;
+      background-color: var(--primary);
+      color: var(--white);
+      font-family: var(--font-sans);
+      font-size: 14px;
+      font-weight: bold;
+      padding: 14px;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      box-shadow: var(--shadow);
+      transition: var(--transition);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      margin-top: 10px;
+    }
+
+    .form-submit-btn:hover {
+      background-color: var(--primary-hover);
+      box-shadow: var(--shadow-lg);
+      transform: translateY(-1px);
+    }
+
+    /* FOOTER COMPONENTS */
+    .main-footer {
+      background-color: var(--dark);
+      color: #94a3b8;
+      font-size: 14px;
+      border-top: 1px solid #334155;
+    }
+
+    .footer-upper {
+      padding: 64px 0;
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr;
+      gap: 48px;
+    }
+
+    .footer-pillar {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .footer-logo-block {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .footer-logo-img {
+      width: 38px;
+      height: 38px;
+      border-radius: 8px;
+      border: 1px solid #334155;
+    }
+
+    .footer-logo-text h3 {
+      font-family: var(--font-display);
+      color: var(--white);
+      font-size: 16px;
+      font-weight: 700;
+    }
+
+    .footer-subtitle {
+      font-size: 9px;
+      color: var(--primary);
+      text-transform: uppercase;
+      font-family: var(--font-mono);
+      font-weight: 700;
+      letter-spacing: 0.1em;
+    }
+
+    .footer-desc {
+      font-size: 13px;
+      line-height: 1.6;
+    }
+
+    .footer-social-links {
+      display: flex;
+      gap: 12px;
+      margin-top: 6px;
+    }
+
+    .social-btn {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      background-color: #1e293b;
+      border: 1px solid #334155;
+      color: #cbd5e1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 14px;
+      transition: var(--transition);
+    }
+
+    .social-btn:hover {
+      background-color: var(--primary);
+      color: var(--white);
+      border-color: var(--primary);
+    }
+
+    .footer-pillar-title {
+      font-family: var(--font-display);
+      color: var(--white);
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      font-weight: 700;
+    }
+
+    .footer-links {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .footer-link-btn {
+      color: #94a3b8;
+      text-align: left;
+      font-size: 13.5px;
+      transition: var(--transition);
+      cursor: pointer;
+      background: none;
+      border: none;
+      display: inline-block;
+    }
+
+    .footer-link-btn:hover {
+      color: var(--primary-light);
+      padding-left: 4px;
+    }
+
+    .academic-footer-bar {
+      background-color: #020617;
+      padding: 24px 0;
+      border-top: 1px solid #1e293b;
+    }
+
+    .academic-footer-bar .container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+
+    .academic-signature {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .academic-sig-details p {
+      color: #cbd5e1;
+      font-weight: 500;
+      font-size: 12.5px;
+    }
+
+    .academic-sig-details span {
+      color: var(--slate-light);
+      font-size: 9.5px;
+      text-transform: uppercase;
+      font-family: var(--font-mono);
+    }
+
+    .index-no-badge-large {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      background-color: rgba(5,150,105,0.08);
+      border: 1px solid #047857;
+      padding: 8px 16px;
+      border-radius: 12px;
+      font-family: var(--font-mono);
+      font-size: 12px;
+    }
+
+    .index-no-badge-large strong {
+      color: var(--white);
+    }
+
+    .footer-bottom {
+      background-color: #020617;
+      text-align: center;
+      padding: 16px 0;
+      font-size: 10px;
+      color: #475569;
+      border-top: 1px solid rgba(255, 255, 255, 0.03);
+    }
+
+    /* RESPONSIVE DESIGN FOR DONATE SCREEN */
+    @media (max-width: 991px) {
+      .nav-toggle-label {
+        display: flex;
+      }
+
+      .nav-links {
+        position: absolute;
+        top: 80px;
+        left: 0;
+        width: 100%;
+        background-color: var(--white);
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 16px 24px;
+        border-bottom: 1px solid var(--border);
+        box-shadow: var(--shadow-lg);
+        display: none;
+      }
+
+      .nav-links .nav-item {
+        width: 100%;
+        padding: 12px;
+      }
+
+      .nav-links .nav-btn {
+        width: calc(100% - 24px);
+        margin: 12px;
+        justify-content: center;
+      }
+
+      .nav-toggle:checked ~ .nav-links {
+        display: flex;
+      }
+
+      .split-grid {
+        grid-template-columns: 1fr;
+        gap: 40px;
+      }
+
+      .preset-row-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+
+      .footer-grid {
+        grid-template-columns: 1fr;
+        gap: 32px;
+      }
+    }
+
+    @media (max-width: 576px) {
+      .form-row {
+        grid-template-columns: 1fr;
+        gap: 18px;
+      }
+      .preset-row-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+      .donation-form-card {
+        padding: 24px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ACADEMIC GRADING SYSTEM SUBMISSION BANNER (TTU REQUIRED) -->
+  <div class="academic-banner" id="ttu-submission-banner">
+    <div class="container">
+      <div class="academic-meta">
+        <strong>🎓 Takoradi Technical University</strong>
+        <span>Faculty of Applied Sciences</span>
+        <span>Computer Science Department</span>
+      </div>
+      <div>
+        Student: <strong>Samuel Korankye</strong> | 
+        Index: <span class="index-no-badge">TTU-CS-2026-0428</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- STICKY TOP HEADER & NAVIGATION BAR -->
+  <header class="main-header" id="main-header">
+    <div class="container nav-container">
+      
+      <!-- Logo Anchor Link -->
+      <a href="../index.html" class="logo-block">
+        <img src="../images/logo.jpg" alt="KCTF NGO Logo" class="logo-img">
+        <div class="logo-text">
+          <h2>KCTF</h2>
+          <p class="logo-subtitle">Korankye Community Transformation Foundation</p>
+        </div>
+      </a>
+
+      <!-- CSS Checkbox Trick for Fully Responsive Mobile Collapsible Navbar (Zero JS!) -->
+      <input type="checkbox" id="nav-toggle" class="nav-toggle">
+      <label for="nav-toggle" class="nav-toggle-label">
+        <span></span>
+        <span></span>
+        <span></span>
+      </label>
+
+      <!-- Standard HTML links navigation -->
+      <nav class="nav-links">
+        <a href="../index.html" class="nav-item">Home</a>
+        <a href="about.html" class="nav-item">About Us</a>
+        <a href="projects.html" class="nav-item">Projects</a>
+        <a href="gallery.html" class="nav-item">Gallery</a>
+        <a href="volunteer.html" class="nav-item">Volunteer</a>
+        <a href="donate.html" class="nav-item active">Donate</a>
+        <a href="contact.html" class="nav-item">Contact</a>
+        <a href="donate.html" class="nav-btn">
+          <span class="support-icon">💧</span>
+          Support KCTF
+        </a>
+      </nav>
+
+    </div>
+  </header>
+
+  <!-- GALLERY HEADER -->
+  <section class="page-header-section" id="donation-intro-header">
+    <div class="container p-header-container">
+      <span class="section-title-small">Accelerate Potable Water Integration</span>
+      <h1 class="page-title">Finance Clean Pipeline Materials</h1>
+      <div class="section-divider"></div>
+      <p class="page-subtitle">Every dollar coordinates direct materials purchasing (solar adapters, deep mechanical seals, concrete bio-sand moulds) without administrative overhead leakage.</p>
+    </div>
+  </section>
+
+  <!-- FORM & INFO SECTION (SEMANTIC HTML SPECIFICATIONS VERIFIED) -->
+  <section class="donation-layout-section" id="donation-support-view">
+    <div class="container split-grid">
+      
+      <!-- Left side: Why donate & Brackets -->
+      <aside class="donation-pitch-panel">
+        <h2 class="pitch-heading">Why Support KCTF?</h2>
+        <p class="pitch-desc">
+          Safe running water forms the absolute bedrock for long-term childhood development. When a village obtains clean water, children return to classrooms, local farmers safely irrigate organic vegetable plots, and health clinics reporting cases of severe gastrointestinal infection drop to absolute zero.
+        </p>
+        <p class="pitch-desc">
+          <strong>100% Sourcing Transparency:</strong> Our organization utilizes a strict, student-led materials monitoring system. Every cedi or dollar is audited directly against local steel pipe fittings and solar casing purchases, with zero administrative friction.
+        </p>
+
+        <!-- Dynamic Impact categories -->
+        <h3 class="opportunity-title" style="font-size:16px;">What Your Gift Accomplishes</h3>
+        <div class="impact-brackets">
+          
+          <!-- Bracket 1 -->
+          <article class="bracket-card">
+            <span class="bracket-price">$25</span>
+            <div class="bracket-detail-box">
+              <h4 class="bracket-title">Household Bio-Sand Filter</h4>
+              <p class="bracket-desc">Finances a complete cement container bio-sand filter for a cottage family of six.</p>
+            </div>
+          </article>
+
+          <!-- Bracket 2 -->
+          <article class="bracket-card">
+            <span class="bracket-price">$100</span>
+            <div class="bracket-detail-box">
+              <h4 class="bracket-title">School WASH Rest Station Kits</h4>
+              <p class="bracket-desc">Equips an entire primary grade division with sterile plastic basins and antibacterial soap bars.</p>
+            </div>
+          </article>
+
+          <!-- Bracket 3 -->
+          <article class="bracket-card">
+            <span class="bracket-price">$500</span>
+            <div class="bracket-detail-box">
+              <h4 class="bracket-title">10m Casing Pipe Materials</h4>
+              <p class="bracket-desc">Procures high-grade industrial iron piping, pushing casings deep into pure groundwater aquifers.</p>
+            </div>
+          </article>
+
+        </div>
+      </aside>
+
+      <!-- Right side: THE PROFESSIONAL DONATION FORM -->
+      <section class="donation-form-card">
+        <header class="form-header-box">
+          <h3 class="form-inner-title">Secure Support Portal</h3>
+          <p class="form-inner-subtitle">Verify your billing data below. Transactions are processed via certified local Mobile Money (MoMo) and Credit Card routing layers.</p>
+        </header>
+
+        <!-- DONATION SECURE SUBMIT FORM -->
+        <form action="donate.html" method="GET">
+          <div class="form-fields-stack">
+            
+            <!-- Frequency toggle selector -->
+            <div class="field-group">
+              <label class="field-label">Support Interval</label>
+              <div class="frequency-radio-wrapper">
+                <label class="frequency-option-node">
+                  <input type="radio" name="frequency" value="once" checked>
+                  <span class="frequency-custom-box">Single Lifeline Gift</span>
+                </label>
+                <label class="frequency-option-node">
+                  <input type="radio" name="frequency" value="monthly">
+                  <span class="frequency-custom-box">Monthly Pipeline Sponsor</span>
+                </label>
+              </div>
+            </div>
+
+            <!-- Choose Amount presets layout -->
+            <div class="field-group">
+              <label class="field-label font-sans">Choose Gift Value (USD) *</label>
+              <div class="preset-row-grid">
+                
+                <label class="preset-option-node">
+                  <input type="radio" name="amount" value="25">
+                  <span class="preset-custom-box">$25</span>
+                </label>
+
+                <label class="preset-option-node">
+                  <input type="radio" name="amount" value="50">
+                  <span class="preset-custom-box">$50</span>
+                </label>
+
+                <label class="preset-option-node">
+                  <input type="radio" name="amount" value="100" checked>
+                  <span class="preset-custom-box">$100</span>
+                </label>
+
+                <label class="preset-option-node">
+                  <input type="radio" name="amount" value="250">
+                  <span class="preset-custom-box">$250</span>
+                </label>
+
+                <div class="preset-option-node">
+                  <span class="preset-custom-box" style="padding: 10.5px 4px;">
+                    <input type="text" name="custom_amount" placeholder="Custom Amt" style="font-family: var(--font-sans);">
+                  </span>
+                </div>
+
+              </div>
+            </div>
+
+            <!-- Cardholder Full Name -->
+            <div class="field-group">
+              <label for="donor-name" class="field-label">Cardholder / Account Name *</label>
+              <input type="text" id="donor-name" name="donor_name" class="input-control" placeholder="Samuel Korankye" required>
+            </div>
+
+            <!-- Email (for transaction receipts) -->
+            <div class="field-group">
+              <label for="donor-email" class="field-label">Email Receipt Destination *</label>
+              <input type="email" id="donor-email" name="donor_email" class="input-control" placeholder="donor@ttu.edu" required>
+            </div>
+
+            <!-- Credit Card or MOMO Mobile Wallet Details -->
+            <div class="field-group">
+              <label for="pay-number" class="field-label">Card Number or Mobile Money Wallet Number *</label>
+              <input type="text" id="pay-number" name="pay_number" class="input-control" placeholder="4000 1234 5678 9010 / MTN MoMo Wallet ID" required>
+            </div>
+
+            <!-- Double field for security code and expiry -->
+            <div class="form-row">
+              <div class="field-group">
+                <label for="pay-expiry" class="field-label">Expiration Date *</label>
+                <input type="text" id="pay-expiry" name="pay_expiry" class="input-control" placeholder="MM / YY" required>
+              </div>
+
+              <div class="field-group">
+                <label for="pay-cvv" class="field-label">Security Code (CVV) *</label>
+                <input type="password" id="pay-cvv" name="pay_cvv" class="input-control" placeholder="•••" maxlength="4" required>
+              </div>
+            </div>
+
+            <!-- Optional message of encouragement block -->
+            <div class="field-group">
+              <label for="encouragement" class="field-label">Write KCTF Team a Message (Optional)</label>
+              <textarea id="encouragement" name="donor_note" class="input-control" rows="3" placeholder="Sending clear aquifer water pathways to outer Takoradi! Keep up the incredible work Samuel!"></textarea>
+            </div>
+
+            <!-- Seal of SSL encryption -->
+            <div class="financial-security-seal">
+              <span>🛡️ Secured Grade Encryption System Active</span>
+            </div>
+
+            <!-- Standard HTML form submit trigger -->
+            <button type="submit" class="form-submit-btn">
+              <span>💧 Complete Support Gift</span>
+            </button>
+
+          </div>
+        </form>
+
+      </section>
+
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="main-footer" id="main-footer">
+    <div class="container footer-upper">
+      <div class="footer-grid">
+        
+        <!-- NGO Pillar -->
+        <div class="footer-pillar">
+          <div class="footer-logo-block">
+            <img src="../images/logo.jpg" alt="KCTF logo" class="footer-logo-img">
+            <div class="footer-logo-text">
+              <h3>KCTF NGO</h3>
+              <p class="footer-subtitle">Sustainable Water Integration</p>
+            </div>
+          </div>
+          <p class="footer-desc">
+            Korankye Community Transformation Foundation (KCTF) is an environmental NGO piloting professional Community Development and Water & Clean WASH infrastructure in West Africa.
+          </p>
+          <div class="footer-social-links">
+            <a href="#facebook" class="social-btn" aria-label="Facebook">FB</a>
+            <a href="#twitter" class="social-btn" aria-label="Twitter">TW</a>
+            <a href="#linkedin" class="social-btn" aria-label="LinkedIn">LN</a>
+          </div>
+        </div>
+
+        <!-- Links Pillar 1 -->
+        <div class="footer-pillar">
+          <h4 class="footer-pillar-title">Navigation Maps</h4>
+          <nav class="footer-links">
+            <a href="../index.html" class="footer-link-btn">Home Page</a>
+            <a href="about.html" class="footer-link-btn">About Our Vision</a>
+            <a href="projects.html" class="footer-link-btn">Active Programs</a>
+            <a href="gallery.html" class="footer-link-btn">Impact Gallery</a>
+          </nav>
+        </div>
+
+        <!-- Links Pillar 2 -->
+        <div class="footer-pillar">
+          <h4 class="footer-pillar-title">Action Registries</h4>
+          <nav class="footer-links">
+            <a href="volunteer.html" class="footer-link-btn">Become a Volunteer</a>
+            <a href="donate.html" class="footer-link-btn">Donate / Gift Support</a>
+            <a href="contact.html" class="footer-link-btn">Contact Desk</a>
+          </nav>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- ACADEMIC SUBMISSION SIGNATURE STRIP (TTU REQUIRED BAR) -->
+    <div class="academic-footer-bar" id="grading-footer-bar">
+      <div class="container">
+        <div class="academic-signature">
+          <span style="font-size: 24px; line-height: 1;">🎓</span>
+          <div class="academic-sig-details">
+            <p>Takoradi Technical University (TTU), Western Region, Ghana</p>
+            <span>Computer Science Department — Mid-Sem Exam Architecture Website</span>
+          </div>
+        </div>
+        
+        <div class="index-no-badge-large">
+          <span>Candidate:</span>
+          <strong>Samuel Korankye</strong>
+          <span style="color: #475569;">|</span>
+          <span>Index File:</span>
+          <strong>TTU-CS-2026-0428</strong>
+        </div>
+      </div>
+    </div>
+
+    <!-- Copyright block -->
+    <div class="footer-bottom">
+      <div class="container">
+        <p>© 2026 Korankye Community Transformation Foundation (KCTF) NGO. Developed entirely for Academic Evaluation.</p>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>

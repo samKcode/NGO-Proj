@@ -1,0 +1,1572 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>KCTF NGO - Korankye Community Transformation Foundation</title>
+  <!-- Google Fonts Connection -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  
+  <style>
+    /* CSS VARIABLES & RESET */
+    :root {
+      --primary: #059669;
+      --primary-hover: #047857;
+      --primary-light: #ecfdf5;
+      --secondary: #2563eb;
+      --secondary-light: #eff6ff;
+      --secondary-hover: #1d4ed8;
+      --dark: #0f172a;
+      --dark-light: #1e293b;
+      --slate: #475569;
+      --slate-light: #94a3b8;
+      --light: #f8fafc;
+      --border: #e2e8f0;
+      --white: #ffffff;
+      
+      --font-display: "Space Grotesk", sans-serif;
+      --font-sans: "Inter", sans-serif;
+      --font-mono: "JetBrains Mono", monospace;
+      
+      --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+      --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+      --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+      --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+      --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: var(--font-sans);
+      background-color: var(--light);
+      color: var(--dark);
+      line-height: 1.6;
+      overflow-x: hidden;
+      scroll-behavior: smooth;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    ul, ol {
+      list-style: none;
+    }
+
+    img {
+      max-width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    /* MINI ANIMS */
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); opacity: 1; }
+      50% { transform: scale(1.05); opacity: 0.82; }
+    }
+    
+    @keyframes spin-slow {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ACADEMIC BANNER STYLE */
+    .academic-banner {
+      background-color: var(--dark);
+      color: #cbd5e1;
+      font-family: var(--font-mono);
+      font-size: 11px;
+      padding: 8px 0;
+      border-bottom: 1px solid #334155;
+    }
+
+    .academic-banner .container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .academic-meta {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .academic-meta span {
+      background-color: #1e293b;
+      padding: 2px 8px;
+      border-radius: 4px;
+      border: 1px solid #475569;
+      color: #38bdf8;
+    }
+
+    .index-no-badge {
+      background-color: #064e3b !important;
+      color: #34d399 !important;
+      border-color: #047857 !important;
+      font-weight: bold;
+    }
+
+    /* HEADER & MAIN NAVIGATION BAR */
+    .main-header {
+      background-color: var(--white);
+      border-bottom: 1px solid var(--border);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .nav-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      height: 80px;
+    }
+
+    .logo-block {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .logo-img {
+      width: 46px;
+      height: 46px;
+      border-radius: 10px;
+      object-cover: cover;
+      border: 1px solid var(--primary-light);
+      box-shadow: inset 0 2px 4px rgba(0,0,0,0.06);
+    }
+
+    .logo-text h2 {
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: 18px;
+      color: var(--dark);
+      letter-spacing: -0.025em;
+      line-height: 1.1;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .logo-text h2::after {
+      content: "";
+      width: 6px;
+      height: 6px;
+      background-color: var(--primary);
+      border-radius: 50%;
+      display: inline-block;
+    }
+
+    .logo-subtitle {
+      font-size: 10px;
+      color: var(--slate);
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-top: 1px;
+    }
+
+    /* Desktop Links list */
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .nav-item {
+      font-size: 13.5px;
+      font-weight: 500;
+      color: var(--slate);
+      padding: 10px 14px;
+      border-radius: 8px;
+      transition: var(--transition);
+    }
+
+    .nav-item:hover {
+      color: var(--primary);
+      background-color: var(--light);
+    }
+
+    .nav-item.active {
+      color: var(--primary-hover);
+      background-color: var(--primary-light);
+      font-weight: 600;
+    }
+
+    /* Support Button in header */
+    .nav-btn {
+      background-color: var(--primary);
+      color: var(--white);
+      font-weight: 600;
+      padding: 10px 18px;
+      border-radius: 8px;
+      margin-left: 10px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      transition: var(--transition);
+      box-shadow: var(--shadow-sm);
+    }
+
+    .nav-btn:hover {
+      background-color: var(--primary-hover);
+      transform: translateY(-1px);
+    }
+
+    .support-icon {
+      animation: pulse 2s infinite ease-in-out;
+    }
+
+    /* Responsive navigation toggle trick using pure CSS */
+    .nav-toggle {
+      display: none;
+    }
+
+    .nav-toggle-label {
+      display: none;
+      flex-direction: column;
+      justify-content: space-between;
+      width: 24px;
+      height: 18px;
+      cursor: pointer;
+    }
+
+    .nav-toggle-label span {
+      display: block;
+      height: 2.5px;
+      width: 100%;
+      background-color: var(--dark);
+      border-radius: 2px;
+      transition: var(--transition);
+    }
+
+    /* HERO BANNER SECTION */
+    .hero-section {
+      background-color: var(--white);
+      padding: 80px 0;
+      position: relative;
+      overflow: hidden;
+      animation: fadeInUp 0.8s ease-out;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 48px;
+      align-items: center;
+    }
+
+    .hero-content {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .pill-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      align-self: flex-start;
+      background-color: var(--primary-light);
+      color: var(--primary-hover);
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      padding: 6px 12px;
+      border-radius: 9999px;
+      font-family: var(--font-mono);
+    }
+
+    .badge-icon {
+      animation: spin-slow 12s infinite linear;
+    }
+
+    .hero-title {
+      font-family: var(--font-display);
+      font-size: 48px;
+      font-weight: 700;
+      line-height: 1.1;
+      color: var(--dark);
+      letter-spacing: -0.02em;
+    }
+
+    .hero-title span {
+      color: var(--primary);
+    }
+
+    .hero-desc {
+      font-size: 17px;
+      color: var(--slate);
+      line-height: 1.6;
+    }
+
+    .hero-ctas {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px;
+      margin-top: 10px;
+    }
+
+    .btn {
+      padding: 14px 24px;
+      border-radius: 12px;
+      font-weight: 600;
+      font-size: 14px;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: var(--transition);
+      cursor: pointer;
+    }
+
+    .btn-primary {
+      background-color: var(--primary);
+      color: var(--white);
+      box-shadow: var(--shadow);
+    }
+
+    .btn-primary:hover {
+      background-color: var(--primary-hover);
+      box-shadow: var(--shadow-lg);
+      transform: translateY(-2px);
+    }
+
+    .btn-outline {
+      background-color: var(--white);
+      color: var(--dark);
+      border: 1px solid var(--border);
+    }
+
+    .btn-outline:hover {
+      background-color: var(--light);
+      border-color: var(--slate-light);
+      transform: translateY(-1px);
+    }
+
+    .hero-image-wrapper {
+      position: relative;
+    }
+
+    .hero-glow {
+      position: absolute;
+      top: -10%;
+      right: -10%;
+      width: 120%;
+      height: 120%;
+      background: radial-gradient(circle, rgba(5,150,105,0.08) 0%, rgba(20,184,166,0.03) 50%, transparent 100%);
+      z-index: 1;
+      pointer-events: none;
+    }
+
+    .hero-image-card {
+      background-color: var(--white);
+      padding: 4px;
+      border-radius: 20px;
+      box-shadow: var(--shadow-xl);
+      border: 4px solid var(--white);
+      overflow: hidden;
+      aspect-ratio: 16/10;
+      position: relative;
+      z-index: 2;
+    }
+
+    .hero-image-card img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 16px;
+      transition: var(--transition);
+    }
+
+    .hero-image-card:hover img {
+      transform: scale(1.03);
+    }
+
+    .hero-overlay-badge {
+      position: absolute;
+      bottom: -24px;
+      left: -24px;
+      background-color: var(--dark);
+      color: var(--white);
+      padding: 16px 20px;
+      border-radius: 16px;
+      box-shadow: var(--shadow-lg);
+      border: 1px solid var(--dark-light);
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      max-width: 280px;
+      z-index: 3;
+    }
+
+    .overlay-icon-box {
+      width: 40px;
+      height: 40px;
+      border-radius: 8px;
+      background-color: rgba(5,150,105,0.2);
+      color: #34d399;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 20px;
+      font-weight: bold;
+    }
+
+    .overlay-title {
+      font-size: 13.5px;
+      font-weight: bold;
+      font-family: var(--font-display);
+    }
+
+    .overlay-desc {
+      font-size: 11px;
+      color: var(--slate-light);
+      margin-top: 1px;
+    }
+
+    /* VISION / CREED SLOGAN BAR */
+    .creed-section {
+      background-color: var(--primary-hover);
+      color: var(--white);
+      padding: 48px 0;
+      text-align: center;
+    }
+
+    .creed-container {
+      max-width: 800px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .creed-pill {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      color: #34d399;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+    }
+
+    .creed-quote {
+      font-family: var(--font-display);
+      font-size: 26px;
+      font-weight: 500;
+      font-style: italic;
+      line-height: 1.4;
+    }
+
+    .creed-citation {
+      font-size: 13.5px;
+      font-weight: 600;
+      color: #a7f3d0;
+    }
+
+    /* BRIEF INTRODUCTION SECTION */
+    .intro-section {
+      padding: 80px 0;
+      background-color: var(--white);
+    }
+
+    .intro-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 48px;
+      align-items: center;
+    }
+
+    .intro-image-frame {
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: var(--shadow-lg);
+      border: 1px solid var(--border);
+      aspect-ratio: 16/10;
+    }
+
+    .intro-image-frame img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .intro-text {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .section-title-small {
+      font-size: 13px;
+      text-transform: uppercase;
+      font-family: var(--font-mono);
+      color: var(--primary);
+      font-weight: 600;
+      letter-spacing: 0.05em;
+    }
+
+    .section-title {
+      font-family: var(--font-display);
+      font-size: 32px;
+      font-weight: 700;
+      color: var(--dark);
+      letter-spacing: -0.019em;
+      line-height: 1.2;
+    }
+
+    .section-divider {
+      width: 60px;
+      height: 4px;
+      background-color: var(--primary);
+      border-radius: 2px;
+    }
+
+    .intro-desc {
+      font-size: 14.5px;
+      color: var(--slate);
+      line-height: 1.6;
+    }
+
+    .intro-features {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      margin-top: 8px;
+    }
+
+    .intro-feat-card {
+      display: flex;
+      gap: 10px;
+    }
+
+    .intro-feat-icon {
+      font-size: 18px;
+      color: var(--primary);
+      font-weight: bold;
+    }
+
+    .intro-feat-title {
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--dark);
+    }
+
+    .intro-feat-desc {
+      font-size: 11.5px;
+      color: var(--slate);
+    }
+
+    /* STATISTICS AUDIT LOG TABLE */
+    .stats-section {
+      padding: 80px 0;
+      background-color: var(--light);
+    }
+
+    .section-header-center {
+      text-align: center;
+      max-width: 600px;
+      margin: 0 auto 40px auto;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      align-items: center;
+    }
+
+    /* HTML Table Design */
+    .table-container {
+      background-color: var(--white);
+      border-radius: 16px;
+      box-shadow: var(--shadow);
+      border: 1px solid var(--border);
+      overflow: hidden;
+      width: 100%;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      text-align: left;
+      font-size: 14px;
+    }
+
+    thead th {
+      background-color: var(--dark);
+      color: #94a3b8;
+      font-family: var(--font-mono);
+      font-size: 11.5px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      padding: 18px 24px;
+    }
+
+    tbody td {
+      padding: 16px 24px;
+      border-bottom: 1px solid var(--border);
+      color: var(--slate);
+    }
+
+    tbody tr:hover {
+      background-color: var(--light);
+    }
+
+    .indicator-name {
+      font-weight: 600;
+      color: var(--dark);
+    }
+
+    .verified-val {
+      font-family: var(--font-mono);
+      font-weight: bold;
+      color: var(--primary-hover);
+      background-color: var(--primary-light);
+      padding: 4px 10px;
+      border-radius: 6px;
+      display: inline-block;
+    }
+
+    .progress-tag {
+      font-size: 11.5px;
+      font-weight: 700;
+      padding: 4px 10px;
+      border-radius: 20px;
+      text-align: center;
+      display: inline-block;
+    }
+
+    .tag-completed {
+      background-color: var(--primary-light);
+      color: var(--primary-hover);
+    }
+
+    .tag-ongoing {
+      background-color: #fef3c7;
+      color: #d97706;
+    }
+
+    /* FEATURED PROJECTS GRID */
+    .featured-section {
+      padding: 80px 0;
+      background-color: var(--white);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .featured-flex-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      margin-bottom: 40px;
+      gap: 24px;
+    }
+
+    .featured-flex-header .section-header {
+      max-width: 600px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .featured-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 32px;
+    }
+
+    .project-card {
+      background-color: var(--light);
+      border-radius: 16px;
+      overflow: hidden;
+      border: 1px solid var(--border);
+      box-shadow: var(--shadow-sm);
+      transition: var(--transition);
+      display: flex;
+      flex-direction: column;
+    }
+
+    .project-card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-lg);
+    }
+
+    .proj-image-frame {
+      aspect-ratio: 16/10;
+      position: relative;
+      overflow: hidden;
+      background-color: #cbd5e1;
+    }
+
+    .proj-image-frame img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: var(--transition);
+    }
+
+    .project-card:hover .proj-image-frame img {
+      transform: scale(1.04);
+    }
+
+    .status-badge {
+      position: absolute;
+      top: 16px;
+      right: 16px;
+      background-color: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(4px);
+      color: var(--primary-hover);
+      padding: 4px 12px;
+      border-radius: 9999px;
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .proj-content {
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      flex-grow: 1;
+    }
+
+    .proj-category {
+      font-family: var(--font-mono);
+      font-size: 10px;
+      font-weight: 700;
+      color: var(--primary);
+      text-transform: uppercase;
+      background-color: var(--primary-light);
+      padding: 2px 8px;
+      border-radius: 4px;
+      align-self: flex-start;
+    }
+
+    .proj-title {
+      font-family: var(--font-display);
+      font-size: 20px;
+      font-weight: 700;
+      color: var(--dark);
+    }
+
+    .proj-desc {
+      font-size: 13.5px;
+      color: var(--slate);
+      line-height: 1.5;
+    }
+
+    .proj-meta-table {
+      border-top: 1px solid var(--border);
+      padding-top: 16px;
+      margin-top: auto;
+      font-size: 12px;
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    /* SUCCESS STORIES / TESTIMONIALS */
+    .testimonials-section {
+      padding: 80px 0;
+      background-color: var(--light);
+    }
+
+    .testimonials-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 32px;
+    }
+
+    .testimonial-card {
+      background-color: var(--white);
+      padding: 40px;
+      border-radius: 20px;
+      border: 1px solid var(--border);
+      box-shadow: var(--shadow-sm);
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+      position: relative;
+    }
+
+    .quote-icon {
+      position: absolute;
+      top: 24px;
+      left: 24px;
+      font-size: 80px;
+      line-height: 0;
+      color: var(--primary-light);
+      font-family: var(--font-display);
+      pointer-events: none;
+    }
+
+    .testimonial-text {
+      font-size: 15px;
+      font-style: italic;
+      color: var(--slate);
+      position: relative;
+      z-index: 2;
+    }
+
+    .testimonial-author {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .author-avatar {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background-color: var(--primary-light);
+      color: var(--primary-hover);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: bold;
+      font-family: var(--font-mono);
+    }
+
+    .author-name {
+      font-family: var(--font-display);
+      font-weight: 600;
+      font-size: 14.5px;
+      color: var(--dark);
+    }
+
+    .author-role {
+      font-size: 11.5px;
+      color: var(--slate-light);
+    }
+
+    /* SPONSORS PARTNERS BAR */
+    .partners-section {
+      padding: 48px 0;
+      background-color: var(--white);
+      text-align: center;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .partners-title {
+      font-family: var(--font-mono);
+      font-size: 10.5px;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--slate-light);
+      margin-bottom: 24px;
+    }
+
+    .partners-flex {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 40px;
+      opacity: 0.82;
+    }
+
+    .partner-logo-box {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .partner-letters-icon {
+      background-color: var(--dark);
+      color: var(--white);
+      font-weight: bold;
+      font-family: var(--font-mono);
+      font-size: 12px;
+      width: 32px;
+      height: 32px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 6px;
+    }
+
+    .partner-name {
+      font-family: var(--font-display);
+      font-weight: bold;
+      font-size: 13.5px;
+      color: var(--slate);
+    }
+
+    /* FOOTER */
+    .main-footer {
+      background-color: var(--dark);
+      color: #94a3b8;
+      font-size: 14px;
+      border-top: 1px solid #334155;
+    }
+
+    .footer-upper {
+      padding: 64px 0;
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr;
+      gap: 48px;
+    }
+
+    .footer-pillar {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .footer-logo-block {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .footer-logo-img {
+      width: 38px;
+      height: 38px;
+      border-radius: 8px;
+      border: 1px solid #334155;
+    }
+
+    .footer-logo-text h3 {
+      font-family: var(--font-display);
+      color: var(--white);
+      font-size: 16px;
+      font-weight: 700;
+    }
+
+    .footer-subtitle {
+      font-size: 9px;
+      color: var(--primary);
+      text-transform: uppercase;
+      font-family: var(--font-mono);
+      font-weight: 700;
+      letter-spacing: 0.1em;
+    }
+
+    .footer-desc {
+      font-size: 13px;
+      line-height: 1.6;
+    }
+
+    .footer-social-links {
+      display: flex;
+      gap: 12px;
+      margin-top: 6px;
+    }
+
+    .social-btn {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      background-color: #1e293b;
+      border: 1px solid #334155;
+      color: #cbd5e1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 14px;
+      transition: var(--transition);
+    }
+
+    .social-btn:hover {
+      background-color: var(--primary);
+      color: var(--white);
+      border-color: var(--primary);
+    }
+
+    .footer-pillar-title {
+      font-family: var(--font-display);
+      color: var(--white);
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      font-weight: 700;
+    }
+
+    .footer-links {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .footer-link-btn {
+      color: #94a3b8;
+      text-align: left;
+      font-size: 13.5px;
+      transition: var(--transition);
+      cursor: pointer;
+      background: none;
+      border: none;
+      display: inline-block;
+    }
+
+    .footer-link-btn:hover {
+      color: var(--primary-light);
+      padding-left: 4px;
+    }
+
+    /* FOOTER ACADEMIC STATS SIGNATURE BAR */
+    .academic-footer-bar {
+      background-color: #020617;
+      padding: 24px 0;
+      border-top: 1px solid #1e293b;
+    }
+
+    .academic-footer-bar .container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+
+    .academic-signature {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .academic-sig-details p {
+      color: #cbd5e1;
+      font-weight: 500;
+      font-size: 12.5px;
+    }
+
+    .academic-sig-details span {
+      color: var(--slate-light);
+      font-size: 9.5px;
+      text-transform: uppercase;
+      font-family: var(--font-mono);
+    }
+
+    .index-no-badge-large {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      background-color: rgba(5,150,105,0.08);
+      border: 1px solid #047857;
+      padding: 8px 16px;
+      border-radius: 12px;
+      font-family: var(--font-mono);
+      font-size: 12px;
+    }
+
+    .index-no-badge-large strong {
+      color: var(--white);
+    }
+
+    .footer-bottom {
+      background-color: #020617;
+      text-align: center;
+      padding: 16px 0;
+      font-size: 10px;
+      color: #475569;
+      border-top: 1px solid rgba(255, 255, 255, 0.03);
+    }
+
+    /* RESPONSIVE DESIGN FOR HOME SCREEN */
+    @media (max-width: 991px) {
+      .nav-toggle-label {
+        display: flex;
+      }
+
+      .nav-links {
+        position: absolute;
+        top: 80px;
+        left: 0;
+        width: 100%;
+        background-color: var(--white);
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 16px 24px;
+        border-bottom: 1px solid var(--border);
+        box-shadow: var(--shadow-lg);
+        display: none;
+      }
+
+      .nav-links .nav-item {
+        width: 100%;
+        padding: 12px;
+      }
+
+      .nav-links .nav-btn {
+        width: calc(100% - 24px);
+        margin: 12px;
+        justify-content: center;
+      }
+
+      .nav-toggle:checked ~ .nav-links {
+        display: flex;
+      }
+
+      .hero-grid, .intro-grid {
+        grid-template-columns: 1fr;
+        gap: 40px;
+      }
+
+      .hero-title {
+        font-size: 38px;
+      }
+
+      .hero-image-wrapper {
+        order: -1;
+      }
+
+      .hero-overlay-badge {
+        bottom: -12px;
+        left: 12px;
+      }
+
+      .featured-grid, .testimonials-grid, .footer-grid {
+        grid-template-columns: 1fr;
+        gap: 32px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ACADEMIC GRADING SYSTEM SUBMISSION BANNER (TTU REQUIRED) -->
+  <div class="academic-banner" id="ttu-submission-banner">
+    <div class="container">
+      <div class="academic-meta">
+        <strong>🎓 Takoradi Technical University</strong>
+        <span>Faculty of Applied Sciences</span>
+        <span>Computer Science Department</span>
+      </div>
+      <div>
+        Student: <strong>Samuel Korankye</strong> | 
+        Index: <span class="index-no-badge">TTU-CS-2026-0428</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- STICKY TOP HEADER & NAVIGATION BAR -->
+  <header class="main-header" id="main-header">
+    <div class="container nav-container">
+      
+      <!-- Logo Anchor Link -->
+      <a href="index.html" class="logo-block">
+        <img src="images/logo.jpg" alt="KCTF NGO Logo" class="logo-img">
+        <div class="logo-text">
+          <h2>KCTF</h2>
+          <p class="logo-subtitle">Korankye Community Transformation Foundation</p>
+        </div>
+      </a>
+
+      <!-- CSS Checkbox Trick for Fully Responsive Mobile Collapsible Navbar (Zero JS!) -->
+      <input type="checkbox" id="nav-toggle" class="nav-toggle">
+      <label for="nav-toggle" class="nav-toggle-label">
+        <span></span>
+        <span></span>
+        <span></span>
+      </label>
+
+      <!-- Standard HTML links navigation -->
+      <nav class="nav-links">
+        <a href="index.html" class="nav-item active">Home</a>
+        <a href="pages/about.html" class="nav-item">About Us</a>
+        <a href="pages/projects.html" class="nav-item">Projects</a>
+        <a href="pages/gallery.html" class="nav-item">Gallery</a>
+        <a href="pages/volunteer.html" class="nav-item">Volunteer</a>
+        <a href="pages/donate.html" class="nav-item">Donate</a>
+        <a href="pages/contact.html" class="nav-item">Contact</a>
+        <a href="pages/donate.html" class="nav-btn">
+          <span class="support-icon">💧</span>
+          Support KCTF
+        </a>
+      </nav>
+
+    </div>
+  </header>
+
+  <!-- MAIN HOMEPAGE WRAPPER -->
+  <main id="home-view">
+    
+    <!-- Hero / Showcase Banner Area -->
+    <section class="hero-section" id="hero-marketing-showcase">
+      <div class="container hero-grid">
+        <article class="hero-content">
+          <span class="pill-badge">
+            <span class="badge-icon">🌿</span>
+            Community & Hygiene Action NGO
+          </span>
+          <h1 class="hero-title">
+            Empowering Lives. <br>
+            <span>Preserving Water.</span>
+          </h1>
+          <p class="hero-desc">
+            KCTF is committed to establishing sustainable water safety grids and clean sanitation infrastructure, promoting life-changing community development in Takoradi and regional West Ghana.
+          </p>
+          <div class="hero-ctas">
+            <a href="pages/volunteer.html" class="btn btn-primary">Join as Volunteer ➜</a>
+            <a href="pages/donate.html" class="btn btn-outline">💧 Support Our Mission</a>
+          </div>
+        </article>
+
+        <div class="hero-image-wrapper">
+          <div class="hero-glow"></div>
+          <figure class="hero-image-card">
+            <img src="images/hero.jpg" alt="Water Borehole Pumps deployed in Ghana by KCTF">
+            
+            <!-- Strategic Highlight overlay container -->
+            <figcaption class="hero-overlay-badge">
+              <div class="overlay-icon-box">💧</div>
+              <div>
+                <h4 class="overlay-title">12,000+ Daily Impact</h4>
+                <p class="overlay-desc">Accessing sterile clear drinking water taps in Takoradi.</p>
+              </div>
+            </figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <!-- Slogan / Creed Quote Section -->
+    <section class="creed-section" id="slogan-creed-bar">
+      <div class="container creed-container">
+        <span class="creed-pill">Our Core Unwavering Creed</span>
+        <blockquote class="creed-quote">
+          "We believe that clean water is not a luxury, but the absolute foundational spark for health, self-reliance, education, and ultimate community development."
+        </blockquote>
+        <cite class="creed-citation">— Samuel Korankye, Founder of KCTF</cite>
+      </div>
+    </section>
+
+    <!-- Brief Introduction Area (Why we exist) -->
+    <section class="intro-section" id="why-kctf-exists">
+      <div class="container intro-grid">
+        <div class="intro-image-frame">
+          <img src="images/community.jpg" alt="Community development workshop by Samuel Korankye">
+        </div>
+        <article class="intro-text">
+          <span class="section-title-small font-mono">Our Direct Purpose</span>
+          <h2 class="section-title">Why Korankye Community Transformation Foundation Exists</h2>
+          <div class="section-divider"></div>
+          <p class="intro-desc">
+            Founded in Takoradi, KCTF works at the intersection of local community empowerment and public healthcare sanitation. Clean water shortages burden hundreds of schoolgoing children and mothers. By executing localized hydro-geological water well projects and building modern agro-cooperative centers, we secure robust clean-drinking and financial futures.
+          </p>
+          
+          <div class="intro-features">
+            <div class="intro-feat-card">
+              <span class="intro-feat-icon">✓</span>
+              <div>
+                <h4 class="intro-feat-title">Water & Sanitation</h4>
+                <p class="intro-feat-desc">Eco-toilets & solar deep borehole setups.</p>
+              </div>
+            </div>
+            <div class="intro-feat-card">
+              <span class="intro-feat-icon">✓</span>
+              <div>
+                <h4 class="intro-feat-title">Community Growth</h4>
+                <p class="intro-feat-desc">Regenerative agricultural farms & craft vocational labs.</p>
+              </div>
+            </div>
+          </div>
+          <div>
+            <a href="pages/about.html" class="btn btn-outline" style="padding: 8px 16px; font-size: 13.5px; border-radius: 8px; margin-top: 10px;">
+              Read our detailed historical journey ➜
+            </a>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- Statistics & Achievements Logs (Demonstrates Semantic HTML Table element) -->
+    <section class="stats-section" id="verified-indicators-table">
+      <div class="container">
+        <div class="section-header-center">
+          <span class="section-title-small font-mono">Monitoring & Evaluation Auditing</span>
+          <h2 class="section-title">Verified Achievements & Regional Impact Log</h2>
+          <div class="section-divider"></div>
+          <p class="intro-desc" style="text-align: center; font-size: 13.5px;">
+            The following audit log table catalogs completed and monitored environmental interventions compiled in collaboration with the Takoradi Municipal Assembly.
+          </p>
+        </div>
+
+        <!-- Custom Styled Semantic Table -->
+        <div class="table-container">
+          <table>
+            <thead>
+              <tr>
+                <th>Environmental indicators</th>
+                <th>Projected Goal</th>
+                <th>Verified Yield (Current)</th>
+                <th>Status</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="indicator-name">Deep Solar-Powered Boreholes commissioned</td>
+                <td>12 Borehole Wells</td>
+                <td><span class="verified-val">18 System Sites</span></td>
+                <td><span class="progress-tag tag-completed text-green">Exceeded</span></td>
+              </tr>
+              <tr>
+                <td class="indicator-name">Daily Potable Water Filtered & Monitored</td>
+                <td>10,000 Liters</td>
+                <td><span class="verified-val">15,000 Liters</span></td>
+                <td><span class="progress-tag tag-completed">Exceeded</span></td>
+              </tr>
+              <tr>
+                <td class="indicator-name">Household Bio-sand filter units built</td>
+                <td>400 Families</td>
+                <td><span class="verified-val">500 Households</span></td>
+                <td><span class="progress-tag tag-completed">Exceeded</span></td>
+              </tr>
+              <tr>
+                <td class="indicator-name">Vocational Green Certificates awarded</td>
+                <td>100 Graduates</td>
+                <td><span class="verified-val">180 Graduated</span></td>
+                <td><span class="progress-tag tag-completed">Exceeded</span></td>
+              </tr>
+              <tr>
+                <td class="indicator-name">Takoradi Public Market Sanitation Hub</td>
+                <td>1 Sanitation Station</td>
+                <td><span class="verified-val" style="color: #b45309; background-color: #fef3c7;">Ongoing Drill</span></td>
+                <td><span class="progress-tag tag-ongoing">On Track</span></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- Featured Projects Grid (at least 2 featured) -->
+    <section class="featured-section" id="home-featured-programs">
+      <div class="container">
+        <div class="featured-flex-header">
+          <div class="section-header">
+            <span class="section-title-small font-mono">Operations Spotlight</span>
+            <h2 class="section-title">Highlighted Environmental Programs</h2>
+            <p class="intro-desc">Explore how KCTF implements sustainable project architectures to make villages clean, self-reliant, and safe.</p>
+          </div>
+          <a href="pages/projects.html" class="btn btn-outline" style="border-radius: 8px;">Explore All Six Projects ➜</a>
+        </div>
+
+        <div class="featured-grid">
+          
+          <!-- Project 1 -->
+          <article class="project-card">
+            <div class="proj-image-frame">
+              <img src="https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?auto=format&fit=crop&q=80&w=600" alt="Anaji Borehole clean water scheme">
+              <span class="status-badge">Completed</span>
+            </div>
+            <div class="proj-content">
+              <span class="proj-category">Water & WASH Linkage</span>
+              <h3 class="proj-title">Anaji Clean Water Borehole & Filtration Hub</h3>
+              <p class="proj-desc">
+                Engineering a solar-powered borehole well coupled with sand bio-filters. Yields 15,000 liters of treated drinking water daily, eliminating water scarcity.
+              </p>
+              <div class="proj-meta-table">
+                <p>📍 Anaji Community, Takoradi, Western Region</p>
+                <p>📈 <strong>Yield:</strong> Provides bacteria-free tap water to 2,500+ residents.</p>
+              </div>
+            </div>
+          </article>
+
+          <!-- Project 2 -->
+          <article class="project-card">
+            <div class="proj-image-frame">
+              <img src="https://images.unsplash.com/photo-1502082553048-f009c37129b9?auto=format&fit=crop&q=80&w=600" alt="Takoradi Market Circle Bio Sanitation Complex">
+              <span class="status-badge">Ongoing</span>
+            </div>
+            <div class="proj-content">
+              <span class="proj-category">Hygienic Sanitation</span>
+              <h3 class="proj-title">Takoradi Market Circle Sanitation Station</h3>
+              <p class="proj-desc">
+                Building a composting flush toilet and greywater marshgarden filtration system utilizing local collected rainwater to preserve market hygiene.
+              </p>
+              <div class="proj-meta-table">
+                <p>📍 Market Circle, Takoradi Administrative Area</p>
+                <p>📈 <strong>Yield:</strong> Will support 800+ micro-traders daily, models biocombustion.</p>
+              </div>
+            </div>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- Testimonial Success Stories -->
+    <section class="testimonials-section" id="stories-testimonials">
+      <div class="container">
+        <div class="section-header-center">
+          <span class="section-title-small font-mono">Triumphant Testimonies</span>
+          <h2 class="section-title" style="text-align: center;">Stories of Restoration & Healthcare</h2>
+          <div class="section-divider"></div>
+        </div>
+
+        <div class="testimonials-grid">
+          
+          <blockquote class="testimonial-card">
+            <span class="quote-icon">“</span>
+            <p class="testimonial-text">
+              "Before KCTF and Samuel Korankye built the Sanitation Hub, our market group faced severe hygienic challenges. Now, we have pristine toilets, secure water, and compost resources we can use. The market environment has completely changed."
+            </p>
+            <div class="testimonial-author">
+              <div class="author-avatar">AD</div>
+              <div>
+                <cite class="author-name block">Abena Danso</cite>
+                <p class="author-role">Market Union Leader, Takoradi Market Circle</p>
+              </div>
+            </div>
+          </blockquote>
+
+          <blockquote class="testimonial-card">
+            <span class="quote-icon">“</span>
+            <p class="testimonial-text">
+              "Water-borne absenteeism was our biggest silent hurdle. Since KCTF installed the solar purification hub right near the school borders, clean water is abundant. Attendance is at an all-time record high, and the children feel safe."
+            </p>
+            <div class="testimonial-author">
+              <div class="author-avatar">KB</div>
+              <div>
+                <cite class="author-name block">Kofi Boakye</cite>
+                <p class="author-role">Head Teacher, Anaji Primary School</p>
+              </div>
+            </div>
+          </blockquote>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- Partners / Supporters Bar -->
+    <section class="partners-section" id="home-partners-bar">
+      <div class="container">
+        <h4 class="partners-title">Authorized Collaborations & Supporting Councils</h4>
+        <div class="partners-flex">
+          
+          <div class="partner-logo-box">
+            <div class="partner-letters-icon">T</div>
+            <span class="partner-name">Takoradi Municipal Assembly</span>
+          </div>
+
+          <div class="partner-logo-box">
+            <div class="partner-letters-icon">W</div>
+            <span class="partner-name">Western Regional Water Board</span>
+          </div>
+
+          <div class="partner-logo-box">
+            <div class="partner-letters-icon">E</div>
+            <span class="partner-name">TTU Environmental Lab</span>
+          </div>
+
+          <div class="partner-logo-box">
+            <div class="partner-letters-icon">G</div>
+            <span class="partner-name">Ghana Green Alliance</span>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="main-footer" id="main-footer">
+    <div class="container footer-upper">
+      <div class="footer-grid">
+        
+        <!-- NGO Pillar -->
+        <div class="footer-pillar">
+          <div class="footer-logo-block">
+            <img src="images/logo.jpg" alt="KCTF logo" class="footer-logo-img">
+            <div class="footer-logo-text">
+              <h3>KCTF NGO</h3>
+              <p class="footer-subtitle">Sustainable Water Integration</p>
+            </div>
+          </div>
+          <p class="footer-desc">
+            Korankye Community Transformation Foundation (KCTF) is an environmental NGO piloting professional Community Development and Water & Clean WASH infrastructure in West Africa.
+          </p>
+          <div class="footer-social-links">
+            <a href="#facebook" class="social-btn" aria-label="Facebook">FB</a>
+            <a href="#twitter" class="social-btn" aria-label="Twitter">TW</a>
+            <a href="#linkedin" class="social-btn" aria-label="LinkedIn">LN</a>
+          </div>
+        </div>
+
+        <!-- Links Pillar 1 -->
+        <div class="footer-pillar">
+          <h4 class="footer-pillar-title">Navigation Maps</h4>
+          <nav class="footer-links">
+            <a href="index.html" class="footer-link-btn">Home Page</a>
+            <a href="pages/about.html" class="footer-link-btn">About Our Vision</a>
+            <a href="pages/projects.html" class="footer-link-btn">Active Programs</a>
+            <a href="pages/gallery.html" class="footer-link-btn">Impact Gallery</a>
+          </nav>
+        </div>
+
+        <!-- Links Pillar 2 -->
+        <div class="footer-pillar">
+          <h4 class="footer-pillar-title">Action Registries</h4>
+          <nav class="footer-links">
+            <a href="pages/volunteer.html" class="footer-link-btn">Become a Volunteer</a>
+            <a href="pages/donate.html" class="footer-link-btn">Donate / Gift Support</a>
+            <a href="pages/contact.html" class="footer-link-btn">Contact Desk</a>
+          </nav>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- ACADEMIC SUBMISSION SIGNATURE STRIP (TTU REQUIRED BAR) -->
+    <div class="academic-footer-bar" id="grading-footer-bar">
+      <div class="container">
+        <div class="academic-signature">
+          <span style="font-size: 24px; line-height: 1;">🎓</span>
+          <div class="academic-sig-details">
+            <p>Takoradi Technical University (TTU), Western Region, Ghana</p>
+            <span>Computer Science Department — Mid-Sem Exam Architecture Website</span>
+          </div>
+        </div>
+        
+        <div class="index-no-badge-large">
+          <span>Candidate:</span>
+          <strong>Samuel Korankye</strong>
+          <span style="color: #475569;">|</span>
+          <span>Index File:</span>
+          <strong>TTU-CS-2026-0428</strong>
+        </div>
+      </div>
+    </div>
+
+    <!-- Copyright block -->
+    <div class="footer-bottom">
+      <div class="container">
+        <p>© 2026 Korankye Community Transformation Foundation (KCTF) NGO. Developed entirely for Academic Evaluation.</p>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>

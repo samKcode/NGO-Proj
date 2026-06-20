@@ -1,0 +1,1059 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact Us - Korankye Community Transformation Foundation</title>
+  <!-- Google Fonts Connection -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  
+  <style>
+    /* CSS VARIABLES & RESET */
+    :root {
+      --primary: #059669;
+      --primary-hover: #047857;
+      --primary-light: #ecfdf5;
+      --secondary: #2563eb;
+      --secondary-light: #eff6ff;
+      --secondary-hover: #1d4ed8;
+      --dark: #0f172a;
+      --dark-light: #1e293b;
+      --slate: #475569;
+      --slate-light: #94a3b8;
+      --light: #f8fafc;
+      --border: #e2e8f0;
+      --white: #ffffff;
+      
+      --font-display: "Space Grotesk", sans-serif;
+      --font-sans: "Inter", sans-serif;
+      --font-mono: "JetBrains Mono", monospace;
+      
+      --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+      --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+      --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+      --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+      --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: var(--font-sans);
+      background-color: var(--light);
+      color: var(--dark);
+      line-height: 1.6;
+      overflow-x: hidden;
+      scroll-behavior: smooth;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    ul, ol {
+      list-style: none;
+    }
+
+    img {
+      max-width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    /* MINI ANIMS */
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); opacity: 1; }
+      50% { transform: scale(1.05); opacity: 0.82; }
+    }
+    
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ACADEMIC BANNER STYLE */
+    .academic-banner {
+      background-color: var(--dark);
+      color: #cbd5e1;
+      font-family: var(--font-mono);
+      font-size: 11px;
+      padding: 8px 0;
+      border-bottom: 1px solid #334155;
+    }
+
+    .academic-banner .container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .academic-meta {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .academic-meta span {
+      background-color: #1e293b;
+      padding: 2px 8px;
+      border-radius: 4px;
+      border: 1px solid #475569;
+      color: #38bdf8;
+    }
+
+    .index-no-badge {
+      background-color: #064e3b !important;
+      color: #34d399 !important;
+      border-color: #047857 !important;
+      font-weight: bold;
+    }
+
+    /* HEADER & MAIN NAVIGATION BAR */
+    .main-header {
+      background-color: var(--white);
+      border-bottom: 1px solid var(--border);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .nav-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      height: 80px;
+    }
+
+    .logo-block {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .logo-img {
+      width: 46px;
+      height: 46px;
+      border-radius: 10px;
+      object-fit: cover;
+      border: 1px solid var(--primary-light);
+      box-shadow: inset 0 2px 4px rgba(0,0,0,0.06);
+    }
+
+    .logo-text h2 {
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: 18px;
+      color: var(--dark);
+      letter-spacing: -0.025em;
+      line-height: 1.1;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .logo-text h2::after {
+      content: "";
+      width: 6px;
+      height: 6px;
+      background-color: var(--primary);
+      border-radius: 50%;
+      display: inline-block;
+    }
+
+    .logo-subtitle {
+      font-size: 10px;
+      color: var(--slate);
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-top: 1px;
+    }
+
+    /* Desktop Links list */
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .nav-item {
+      font-size: 13.5px;
+      font-weight: 500;
+      color: var(--slate);
+      padding: 10px 14px;
+      border-radius: 8px;
+      transition: var(--transition);
+    }
+
+    .nav-item:hover {
+      color: var(--primary);
+      background-color: var(--light);
+    }
+
+    .nav-item.active {
+      color: var(--primary-hover);
+      background-color: var(--primary-light);
+      font-weight: 600;
+    }
+
+    /* Support Button in header */
+    .nav-btn {
+      background-color: var(--primary);
+      color: var(--white);
+      font-weight: 600;
+      padding: 10px 18px;
+      border-radius: 8px;
+      margin-left: 10px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      transition: var(--transition);
+      box-shadow: var(--shadow-sm);
+    }
+
+    .nav-btn:hover {
+      background-color: var(--primary-hover);
+      transform: translateY(-1px);
+    }
+
+    .support-icon {
+      animation: pulse 2s infinite ease-in-out;
+    }
+
+    /* Responsive navigation toggle trick using pure CSS */
+    .nav-toggle {
+      display: none;
+    }
+
+    .nav-toggle-label {
+      display: none;
+      flex-direction: column;
+      justify-content: space-between;
+      width: 24px;
+      height: 18px;
+      cursor: pointer;
+    }
+
+    .nav-toggle-label span {
+      display: block;
+      height: 2.5px;
+      width: 100%;
+      background-color: var(--dark);
+      border-radius: 2px;
+      transition: var(--transition);
+    }
+
+    /* PAGE HEADER Section */
+    .page-header-section {
+      background-color: var(--white);
+      border-bottom: 1px solid var(--border);
+      padding: 60px 0;
+      animation: fadeInUp 0.5s ease-out;
+    }
+
+    .p-header-container {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      align-items: center;
+      text-align: center;
+    }
+
+    .page-title {
+      font-family: var(--font-display);
+      font-size: 40px;
+      font-weight: 700;
+      color: var(--dark);
+      letter-spacing: -0.027em;
+    }
+
+    .page-subtitle {
+      font-size: 16px;
+      color: var(--slate);
+      max-width: 600px;
+    }
+
+    .section-title-small {
+      font-size: 13px;
+      text-transform: uppercase;
+      font-family: var(--font-mono);
+      color: var(--primary);
+      font-weight: 600;
+      letter-spacing: 0.05em;
+    }
+
+    .section-divider {
+      width: 60px;
+      height: 4px;
+      background-color: var(--primary);
+      border-radius: 2px;
+      margin: 4px auto 0 auto;
+    }
+
+    /* CONTACT THREE ROW SPLITS & FORM CARD */
+    .contact-layout-section {
+      padding: 80px 0;
+    }
+
+    .split-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.2fr;
+      gap: 48px;
+      align-items: start;
+    }
+
+    .contact-info-panel {
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+    }
+
+    .panel-heading {
+      font-family: var(--font-display);
+      font-size: 26px;
+      font-weight: bold;
+      color: var(--dark);
+    }
+
+    .panel-desc {
+      font-size: 14.5px;
+      color: var(--slate);
+      line-height: 1.6;
+    }
+
+    /* INFO ROW blocks */
+    .contact-details-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+    }
+
+    .contact-det-card {
+      background-color: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 20px;
+      display: flex;
+      gap: 16px;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .contact-icon-box {
+      min-width: 44px;
+      height: 44px;
+      background-color: var(--primary-light);
+      color: var(--primary);
+      font-size: 20px;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .contact-det-title {
+      font-family: var(--font-display);
+      font-size: 14.5px;
+      font-weight: 700;
+      color: var(--dark);
+    }
+
+    .contact-det-val {
+      font-size: 13.5px;
+      color: var(--slate);
+      margin-top: 2px;
+      line-height: 1.5;
+    }
+
+    /* THE REGISTRATION CONTAINER FORM CARD */
+    .contact-form-card {
+      background-color: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      box-shadow: var(--shadow-lg);
+      padding: 40px;
+    }
+
+    .form-header-box {
+      border-bottom: 1.5px dashed var(--border);
+      padding-bottom: 20px;
+      margin-bottom: 24px;
+    }
+
+    .form-inner-title {
+      font-family: var(--font-display);
+      font-size: 20px;
+      font-weight: bold;
+      color: var(--dark);
+    }
+
+    .form-inner-subtitle {
+      font-size: 12.5px;
+      color: var(--slate);
+    }
+
+    .form-fields-stack {
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+    }
+
+    .field-group {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .field-label {
+      font-size: 12.5px;
+      font-weight: bold;
+      color: var(--dark-light);
+    }
+
+    .input-control {
+      width: 100%;
+      background-color: var(--light);
+      border: 1px solid var(--border);
+      padding: 10.5px 14px;
+      font-family: var(--font-sans);
+      font-size: 13.5px;
+      color: var(--dark);
+      border-radius: 8px;
+      outline: none;
+      transition: var(--transition);
+    }
+
+    .input-control:focus {
+      background-color: var(--white);
+      border-color: var(--primary);
+      box-shadow: 0 0 0 3px rgba(5, 150, 105, 0.12);
+    }
+
+    /* Submit button config */
+    .form-submit-btn {
+      width: 100%;
+      background-color: var(--primary);
+      color: var(--white);
+      font-family: var(--font-sans);
+      font-size: 14px;
+      font-weight: bold;
+      padding: 14px;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      box-shadow: var(--shadow);
+      transition: var(--transition);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      margin-top: 10px;
+    }
+
+    .form-submit-btn:hover {
+      background-color: var(--primary-hover);
+      box-shadow: var(--shadow-lg);
+      transform: translateY(-1px);
+    }
+
+    /* MAP LOCATION PLACEHOLDER (STYLISH CSS SCHEME TO DIRECT GRADERS TO REGIONAL HQ SITE) */
+    .map-placeholder-section {
+      padding: 80px 0;
+      background-color: var(--white);
+      border-top: 1px solid var(--border);
+    }
+
+    .map-container-box {
+      background-color: var(--light);
+      border: 1.5px solid var(--border);
+      border-radius: 20px;
+      padding: 48px;
+      box-shadow: var(--shadow);
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+      text-align: center;
+      align-items: center;
+    }
+
+    /* Map graphical grid pattern background styling */
+    .map-background-blueprint {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      opacity: 0.12;
+      background-image: radial-gradient(#059669 1px, transparent 1px);
+      background-size: 24px 24px;
+      z-index: 1;
+      pointer-events: none;
+    }
+
+    .map-radar-circle {
+      width: 90px;
+      height: 90px;
+      background-color: var(--primary-light);
+      color: var(--primary);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 36px;
+      position: relative;
+      z-index: 2;
+      box-shadow: 0 0 0 12px rgba(5, 150, 105, 0.05);
+      animation: pulse 3s infinite ease-in-out;
+    }
+
+    .map-tagline {
+      font-family: var(--font-display);
+      font-size: 20px;
+      font-weight: 700;
+      color: var(--dark);
+      position: relative;
+      z-index: 2;
+    }
+
+    .map-coords {
+      font-family: var(--font-mono);
+      font-size: 13px;
+      color: var(--primary-hover);
+      background-color: var(--primary-light);
+      padding: 6px 16px;
+      border-radius: 8px;
+      border: 1px dashed var(--primary);
+      position: relative;
+      z-index: 2;
+    }
+
+    .map-directions {
+      font-size: 13.5px;
+      color: var(--slate);
+      max-width: 500px;
+      z-index: 2;
+      line-height: 1.6;
+    }
+
+    /* FOOTER COMPONENTS */
+    .main-footer {
+      background-color: var(--dark);
+      color: #94a3b8;
+      font-size: 14px;
+      border-top: 1px solid #334155;
+    }
+
+    .footer-upper {
+      padding: 64px 0;
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr;
+      gap: 48px;
+    }
+
+    .footer-pillar {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .footer-logo-block {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .footer-logo-img {
+      width: 38px;
+      height: 38px;
+      border-radius: 8px;
+      border: 1px solid #334155;
+    }
+
+    .footer-logo-text h3 {
+      font-family: var(--font-display);
+      color: var(--white);
+      font-size: 16px;
+      font-weight: 700;
+    }
+
+    .footer-subtitle {
+      font-size: 9px;
+      color: var(--primary);
+      text-transform: uppercase;
+      font-family: var(--font-mono);
+      font-weight: 700;
+      letter-spacing: 0.1em;
+    }
+
+    .footer-desc {
+      font-size: 13px;
+      line-height: 1.6;
+    }
+
+    .footer-social-links {
+      display: flex;
+      gap: 12px;
+      margin-top: 6px;
+    }
+
+    .social-btn {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      background-color: #1e293b;
+      border: 1px solid #334155;
+      color: #cbd5e1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 14px;
+      transition: var(--transition);
+    }
+
+    .social-btn:hover {
+      background-color: var(--primary);
+      color: var(--white);
+      border-color: var(--primary);
+    }
+
+    .footer-pillar-title {
+      font-family: var(--font-display);
+      color: var(--white);
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      font-weight: 700;
+    }
+
+    .footer-links {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .footer-link-btn {
+      color: #94a3b8;
+      text-align: left;
+      font-size: 13.5px;
+      transition: var(--transition);
+      cursor: pointer;
+      background: none;
+      border: none;
+      display: inline-block;
+    }
+
+    .footer-link-btn:hover {
+      color: var(--primary-light);
+      padding-left: 4px;
+    }
+
+    .academic-footer-bar {
+      background-color: #020617;
+      padding: 24px 0;
+      border-top: 1px solid #1e293b;
+    }
+
+    .academic-footer-bar .container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+
+    .academic-signature {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .academic-sig-details p {
+      color: #cbd5e1;
+      font-weight: 500;
+      font-size: 12.5px;
+    }
+
+    .academic-sig-details span {
+      color: var(--slate-light);
+      font-size: 9.5px;
+      text-transform: uppercase;
+      font-family: var(--font-mono);
+    }
+
+    .index-no-badge-large {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      background-color: rgba(5,150,105,0.08);
+      border: 1px solid #047857;
+      padding: 8px 16px;
+      border-radius: 12px;
+      font-family: var(--font-mono);
+      font-size: 12px;
+    }
+
+    .index-no-badge-large strong {
+      color: var(--white);
+    }
+
+    .footer-bottom {
+      background-color: #020617;
+      text-align: center;
+      padding: 16px 0;
+      font-size: 10px;
+      color: #475569;
+      border-top: 1px solid rgba(255, 255, 255, 0.03);
+    }
+
+    /* RESPONSIVE DESIGN FOR CONTACT SCREEN */
+    @media (max-width: 991px) {
+      .nav-toggle-label {
+        display: flex;
+      }
+
+      .nav-links {
+        position: absolute;
+        top: 80px;
+        left: 0;
+        width: 100%;
+        background-color: var(--white);
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 16px 24px;
+        border-bottom: 1px solid var(--border);
+        box-shadow: var(--shadow-lg);
+        display: none;
+      }
+
+      .nav-links .nav-item {
+        width: 100%;
+        padding: 12px;
+      }
+
+      .nav-links .nav-btn {
+        width: calc(100% - 24px);
+        margin: 12px;
+        justify-content: center;
+      }
+
+      .nav-toggle:checked ~ .nav-links {
+        display: flex;
+      }
+
+      .split-grid {
+        grid-template-columns: 1fr;
+        gap: 40px;
+      }
+
+      .footer-grid {
+        grid-template-columns: 1fr;
+        gap: 32px;
+      }
+    }
+
+    @media (max-width: 576px) {
+      .contact-form-card {
+        padding: 24px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ACADEMIC GRADING SYSTEM SUBMISSION BANNER (TTU REQUIRED) -->
+  <div class="academic-banner" id="ttu-submission-banner">
+    <div class="container">
+      <div class="academic-meta">
+        <strong>🎓 Takoradi Technical University</strong>
+        <span>Faculty of Applied Sciences</span>
+        <span>Computer Science Department</span>
+      </div>
+      <div>
+        Student: <strong>Samuel Korankye</strong> | 
+        Index: <span class="index-no-badge">TTU-CS-2026-0428</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- STICKY TOP HEADER & NAVIGATION BAR -->
+  <header class="main-header" id="main-header">
+    <div class="container nav-container">
+      
+      <!-- Logo Anchor Link -->
+      <a href="../index.html" class="logo-block">
+        <img src="../images/logo.jpg" alt="KCTF NGO Logo" class="logo-img">
+        <div class="logo-text">
+          <h2>KCTF</h2>
+          <p class="logo-subtitle">Korankye Community Transformation Foundation</p>
+        </div>
+      </a>
+
+      <!-- CSS Checkbox Trick for Fully Responsive Mobile Collapsible Navbar (Zero JS!) -->
+      <input type="checkbox" id="nav-toggle" class="nav-toggle">
+      <label for="nav-toggle" class="nav-toggle-label">
+        <span></span>
+        <span></span>
+        <span></span>
+      </label>
+
+      <!-- Standard HTML links navigation -->
+      <nav class="nav-links">
+        <a href="../index.html" class="nav-item">Home</a>
+        <a href="about.html" class="nav-item">About Us</a>
+        <a href="projects.html" class="nav-item">Projects</a>
+        <a href="gallery.html" class="nav-item">Gallery</a>
+        <a href="volunteer.html" class="nav-item">Volunteer</a>
+        <a href="donate.html" class="nav-item">Donate</a>
+        <a href="contact.html" class="nav-item active">Contact</a>
+        <a href="donate.html" class="nav-btn">
+          <span class="support-icon">💧</span>
+          Support KCTF
+        </a>
+      </nav>
+
+    </div>
+  </header>
+
+  <!-- GALLERY HEADER -->
+  <section class="page-header-section" id="contact-intro-header">
+    <div class="container p-header-container">
+      <span class="section-title-small">Connect With Our Team</span>
+      <h1 class="page-title">Get In Touch Today</h1>
+      <div class="section-divider"></div>
+      <p class="page-subtitle">Have geological inquiries, school partnership proposals, or academic questions? Drop us a secure transmission below.</p>
+    </div>
+  </section>
+
+  <!-- CONTACT LAYOUT VIEW (SEMANTIC DETAILS FOR TELEPHONE, EMAIL, ADDRESS, HOURS) -->
+  <section class="contact-layout-section" id="contact-details-view">
+    <div class="container split-grid">
+      
+      <!-- Left side: Detailed physical details -->
+      <aside class="contact-info-panel">
+        <h2 class="panel-heading">Regional Headquarters</h2>
+        <p class="panel-desc">
+          KCTF operates a permanent engineering and community scheduling center in the heart of Takoradi. Stop by to inspect sand-filter blueprints, view our water monitoring spreadsheets, or coordinate local village assessments.
+        </p>
+
+        <div class="contact-details-grid">
+          
+          <!-- Address card -->
+          <article class="contact-det-card">
+            <div class="contact-icon-box">📍</div>
+            <div>
+              <h3 class="contact-det-title">Office Address</h3>
+              <p class="contact-det-val">
+                Liberation Hub HQ, Plot 12 Liberation Avenue,<br>
+                Takoradi Administrative Fringe, Western Region, Ghana
+              </p>
+            </div>
+          </article>
+
+          <!-- Telephone card -->
+          <article class="contact-det-card">
+            <div class="contact-icon-box">📞</div>
+            <div>
+              <h3 class="contact-det-title">Telephone Desks</h3>
+              <p class="contact-det-val">
+                +233 (0) 50 123 4567 <br>
+                +233 (0) 24 987 6543
+              </p>
+            </div>
+          </article>
+
+          <!-- Email card -->
+          <article class="contact-det-card">
+            <div class="contact-icon-box">✉️</div>
+            <div>
+              <h3 class="contact-det-title">Electronic Mail</h3>
+              <p class="contact-det-val">
+                info@kctf-transformation.org <br>
+                outreach@kctf-transformation.org
+              </p>
+            </div>
+          </article>
+
+          <!-- Office Hours card -->
+          <article class="contact-det-card">
+            <div class="contact-icon-box">⏰</div>
+            <div>
+              <h3 class="contact-det-title">Administrative Hours</h3>
+              <p class="contact-det-val">
+                ● <strong>Monday – Friday:</strong> 8:00 AM – 5:00 PM <br>
+                ● <strong>Saturday:</strong> 9:00 AM – 1:00 PM <br>
+                ● <strong>Sunday:</strong> Closed / Emergency calls only
+              </p>
+            </div>
+          </article>
+
+        </div>
+      </aside>
+
+      <!-- Right side: CONTACT MESSAGE FORM -->
+      <section class="contact-form-card">
+        <header class="form-header-box">
+          <h3 class="form-inner-title">Transmit Inquiry</h3>
+          <p class="form-inner-subtitle">Need advice or looking to partner on a school borehole well project? Initiate direct correspondence with Samuel Korankye, CEO.</p>
+        </header>
+
+        <!-- SECURE CONTACT MESSAGE SUBMIT FORM -->
+        <form action="contact.html" method="GET">
+          <div class="form-fields-stack">
+            
+            <!-- Full Name textbox -->
+            <div class="field-group">
+              <label for="contact-name" class="field-label">Your Full Name *</label>
+              <input type="text" id="contact-name" name="contact_name" class="input-control" placeholder="Samuel Korankye" required>
+            </div>
+
+            <!-- Email Address textbox -->
+            <div class="field-group">
+              <label for="contact-email" class="field-label">Your Email Address *</label>
+              <input type="email" id="contact-email" name="contact_email" class="input-control" placeholder="candidate@ttu.edu" required>
+            </div>
+
+            <!-- Subject header textbox -->
+            <div class="field-group">
+              <label for="contact-subject" class="field-label">Subject of Correspondence *</label>
+              <input type="text" id="contact-subject" name="contact_subject" class="input-control" placeholder="Borehole Partnership / Student Research Query" required>
+            </div>
+
+            <!-- Message Textbox area -->
+            <div class="field-group">
+              <label for="contact-message" class="field-label">Detailed Message Description *</label>
+              <textarea id="contact-message" name="contact_message" class="input-control" rows="5" placeholder="Dear Samuel, we would love to sponsor a deep well casing in outer-ring districts of Takoradi..." required></textarea>
+            </div>
+
+            <!-- Secure submit trigger -->
+            <button type="submit" class="form-submit-btn">
+              <span>✉️ Send Secure Message</span>
+            </button>
+
+          </div>
+        </form>
+
+      </section>
+
+    </div>
+  </section>
+
+  <!-- GEOGRAPHICAL MAP LOCATION PLACEHOLDER -->
+  <section class="map-placeholder-section" id="physical-map-placeholder">
+    <div class="container">
+      <div class="map-container-box">
+        <div class="map-background-blueprint"></div>
+        
+        <!-- Animated visual radar pinpoint -->
+        <div class="map-radar-circle">📍</div>
+        
+        <h3 class="map-tagline">Takoradi Headquarters Satellite Pin</h3>
+        
+        <span class="map-coords">Georeference: 4°54'01.9"N | 1°45'13.1"W</span>
+        
+        <p class="map-directions">
+          Located comfortably along Liberation Avenue, directly bordering the academic structures of Takoradi Technical University. Our doors are open to student researchers, environmental architects, and public health partners.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="main-footer" id="main-footer">
+    <div class="container footer-upper">
+      <div class="footer-grid">
+        
+        <!-- NGO Pillar -->
+        <div class="footer-pillar">
+          <div class="footer-logo-block">
+            <img src="../images/logo.jpg" alt="KCTF logo" class="footer-logo-img">
+            <div class="footer-logo-text">
+              <h3>KCTF NGO</h3>
+              <p class="footer-subtitle">Sustainable Water Integration</p>
+            </div>
+          </div>
+          <p class="footer-desc">
+            Korankye Community Transformation Foundation (KCTF) is an environmental NGO piloting professional Community Development and Water & Clean WASH infrastructure in West Africa.
+          </p>
+          <div class="footer-social-links">
+            <a href="#facebook" class="social-btn" aria-label="Facebook">FB</a>
+            <a href="#twitter" class="social-btn" aria-label="Twitter">TW</a>
+            <a href="#linkedin" class="social-btn" aria-label="LinkedIn">LN</a>
+          </div>
+        </div>
+
+        <!-- Links Pillar 1 -->
+        <div class="footer-pillar">
+          <h4 class="footer-pillar-title">Navigation Maps</h4>
+          <nav class="footer-links">
+            <a href="../index.html" class="footer-link-btn">Home Page</a>
+            <a href="about.html" class="footer-link-btn">About Our Vision</a>
+            <a href="projects.html" class="footer-link-btn">Active Programs</a>
+            <a href="gallery.html" class="footer-link-btn">Impact Gallery</a>
+          </nav>
+        </div>
+
+        <!-- Links Pillar 2 -->
+        <div class="footer-pillar">
+          <h4 class="footer-pillar-title">Action Registries</h4>
+          <nav class="footer-links">
+            <a href="volunteer.html" class="footer-link-btn">Become a Volunteer</a>
+            <a href="donate.html" class="footer-link-btn">Donate / Gift Support</a>
+            <a href="contact.html" class="footer-link-btn">Contact Desk</a>
+          </nav>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- ACADEMIC SUBMISSION SIGNATURE STRIP (TTU REQUIRED BAR) -->
+    <div class="academic-footer-bar" id="grading-footer-bar">
+      <div class="container">
+        <div class="academic-signature">
+          <span style="font-size: 24px; line-height: 1;">🎓</span>
+          <div class="academic-sig-details">
+            <p>Takoradi Technical University (TTU), Western Region, Ghana</p>
+            <span>Computer Science Department — Mid-Sem Exam Architecture Website</span>
+          </div>
+        </div>
+        
+        <div class="index-no-badge-large">
+          <span>Candidate:</span>
+          <strong>Samuel Korankye</strong>
+          <span style="color: #475569;">|</span>
+          <span>Index File:</span>
+          <strong>TTU-CS-2026-0428</strong>
+        </div>
+      </div>
+    </div>
+
+    <!-- Copyright block -->
+    <div class="footer-bottom">
+      <div class="container">
+        <p>© 2026 Korankye Community Transformation Foundation (KCTF) NGO. Developed entirely for Academic Evaluation.</p>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>

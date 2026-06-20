@@ -1,0 +1,1025 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gallery - Korankye Community Transformation Foundation</title>
+  <!-- Google Fonts Connection -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  
+  <style>
+    /* CSS VARIABLES & RESET */
+    :root {
+      --primary: #059669;
+      --primary-hover: #047857;
+      --primary-light: #ecfdf5;
+      --secondary: #2563eb;
+      --secondary-light: #eff6ff;
+      --secondary-hover: #1d4ed8;
+      --dark: #0f172a;
+      --dark-light: #1e293b;
+      --slate: #475569;
+      --slate-light: #94a3b8;
+      --light: #f8fafc;
+      --border: #e2e8f0;
+      --white: #ffffff;
+      
+      --font-display: "Space Grotesk", sans-serif;
+      --font-sans: "Inter", sans-serif;
+      --font-mono: "JetBrains Mono", monospace;
+      
+      --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+      --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+      --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+      --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+      --transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: var(--font-sans);
+      background-color: var(--light);
+      color: var(--dark);
+      line-height: 1.6;
+      overflow-x: hidden;
+      scroll-behavior: smooth;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    ul, ol {
+      list-style: none;
+    }
+
+    img {
+      max-width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    /* MINI ANIMS */
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); opacity: 1; }
+      50% { transform: scale(1.05); opacity: 0.82; }
+    }
+    
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ACADEMIC BANNER STYLE */
+    .academic-banner {
+      background-color: var(--dark);
+      color: #cbd5e1;
+      font-family: var(--font-mono);
+      font-size: 11px;
+      padding: 8px 0;
+      border-bottom: 1px solid #334155;
+    }
+
+    .academic-banner .container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .academic-meta {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .academic-meta span {
+      background-color: #1e293b;
+      padding: 2px 8px;
+      border-radius: 4px;
+      border: 1px solid #475569;
+      color: #38bdf8;
+    }
+
+    .index-no-badge {
+      background-color: #064e3b !important;
+      color: #34d399 !important;
+      border-color: #047857 !important;
+      font-weight: bold;
+    }
+
+    /* HEADER & MAIN NAVIGATION BAR */
+    .main-header {
+      background-color: var(--white);
+      border-bottom: 1px solid var(--border);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .nav-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      height: 80px;
+    }
+
+    .logo-block {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .logo-img {
+      width: 46px;
+      height: 46px;
+      border-radius: 10px;
+      object-fit: cover;
+      border: 1px solid var(--primary-light);
+      box-shadow: inset 0 2px 4px rgba(0,0,0,0.06);
+    }
+
+    .logo-text h2 {
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: 18px;
+      color: var(--dark);
+      letter-spacing: -0.025em;
+      line-height: 1.1;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .logo-text h2::after {
+      content: "";
+      width: 6px;
+      height: 6px;
+      background-color: var(--primary);
+      border-radius: 50%;
+      display: inline-block;
+    }
+
+    .logo-subtitle {
+      font-size: 10px;
+      color: var(--slate);
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-top: 1px;
+    }
+
+    /* Desktop Links list */
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .nav-item {
+      font-size: 13.5px;
+      font-weight: 500;
+      color: var(--slate);
+      padding: 10px 14px;
+      border-radius: 8px;
+      transition: var(--transition);
+    }
+
+    .nav-item:hover {
+      color: var(--primary);
+      background-color: var(--light);
+    }
+
+    .nav-item.active {
+      color: var(--primary-hover);
+      background-color: var(--primary-light);
+      font-weight: 600;
+    }
+
+    /* Support Button in header */
+    .nav-btn {
+      background-color: var(--primary);
+      color: var(--white);
+      font-weight: 600;
+      padding: 10px 18px;
+      border-radius: 8px;
+      margin-left: 10px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      transition: var(--transition);
+      box-shadow: var(--shadow-sm);
+    }
+
+    .nav-btn:hover {
+      background-color: var(--primary-hover);
+      transform: translateY(-1px);
+    }
+
+    .support-icon {
+      animation: pulse 2s infinite ease-in-out;
+    }
+
+    /* Responsive navigation toggle trick using pure CSS */
+    .nav-toggle {
+      display: none;
+    }
+
+    .nav-toggle-label {
+      display: none;
+      flex-direction: column;
+      justify-content: space-between;
+      width: 24px;
+      height: 18px;
+      cursor: pointer;
+    }
+
+    .nav-toggle-label span {
+      display: block;
+      height: 2.5px;
+      width: 100%;
+      background-color: var(--dark);
+      border-radius: 2px;
+      transition: var(--transition);
+    }
+
+    /* PAGE HEADER Section */
+    .page-header-section {
+      background-color: var(--white);
+      border-bottom: 1px solid var(--border);
+      padding: 60px 0;
+      animation: fadeInUp 0.5s ease-out;
+    }
+
+    .p-header-container {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      align-items: center;
+      text-align: center;
+    }
+
+    .page-title {
+      font-family: var(--font-display);
+      font-size: 40px;
+      font-weight: 700;
+      color: var(--dark);
+      letter-spacing: -0.027em;
+    }
+
+    .page-subtitle {
+      font-size: 16px;
+      color: var(--slate);
+      max-width: 600px;
+    }
+
+    .section-title-small {
+      font-size: 13px;
+      text-transform: uppercase;
+      font-family: var(--font-mono);
+      color: var(--primary);
+      font-weight: 600;
+      letter-spacing: 0.05em;
+    }
+
+    .section-divider {
+      width: 60px;
+      height: 4px;
+      background-color: var(--primary);
+      border-radius: 2px;
+      margin: 4px auto 0 auto;
+    }
+
+    /* GALLERY CSS GRID BLOCK */
+    .gallery-grid-section {
+      padding: 80px 0;
+    }
+
+    /* Professional Responsive Bento Grid using CSS Grid */
+    .bento-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      grid-auto-rows: 240px;
+      gap: 24px;
+    }
+
+    .gallery-item {
+      position: relative;
+      border-radius: 16px;
+      overflow: hidden;
+      border: 1px solid var(--border);
+      box-shadow: var(--shadow-sm);
+      transition: var(--transition);
+    }
+
+    /* CSS Bento Sizing Spans */
+    .span-w2 {
+      grid-column: span 2;
+    }
+
+    .span-h2 {
+      grid-row: span 2;
+    }
+
+    .gallery-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: var(--transition);
+    }
+
+    /* Dark gradient layer overlay on slide hover */
+    .gallery-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(to top, rgba(15, 23, 42, 0.95) 0%, rgba(15, 23, 42, 0.4) 60%, transparent 100%);
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 24px;
+      opacity: 0;
+      transition: var(--transition);
+      z-index: 2;
+    }
+
+    .gallery-item:hover {
+      transform: scale(1.02);
+      box-shadow: var(--shadow-lg);
+    }
+
+    .gallery-item:hover img {
+      transform: scale(1.05);
+    }
+
+    .gallery-item:hover .gallery-overlay {
+      opacity: 1;
+    }
+
+    .gallery-tag {
+      font-family: var(--font-mono);
+      font-size: 9.5px;
+      font-weight: 700;
+      color: #34d399;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: 4px;
+    }
+
+    .gallery-heading {
+      font-family: var(--font-display);
+      color: var(--white);
+      font-size: 17px;
+      font-weight: bold;
+      line-height: 1.2;
+    }
+
+    .gallery-desc {
+      font-size: 11px;
+      color: #cbd5e1;
+      margin-top: 4px;
+    }
+
+    /* HISTORIC HIGHLIGHTS CAROUSEL (ZERO JAVASCRIPT EXTREMELY POLISHED INTERACTIVE GALLERY TABS) */
+    .tabs-section {
+      background-color: var(--white);
+      padding: 80px 0;
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .tabs-container {
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    /* Pure CSS Tab Implementation */
+    .tabs-inputs {
+      display: none;
+    }
+
+    .tabs-nav {
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+      margin-bottom: 40px;
+      flex-wrap: wrap;
+    }
+
+    .tab-label {
+      background-color: var(--light);
+      border: 1px solid var(--border);
+      padding: 12px 24px;
+      border-radius: 9999px;
+      font-size: 13.5px;
+      font-weight: 600;
+      color: var(--slate);
+      cursor: pointer;
+      transition: var(--transition);
+    }
+
+    .tab-label:hover {
+      background-color: var(--primary-light);
+      color: var(--primary);
+    }
+
+    .tab-content {
+      display: none;
+      background-color: var(--light);
+      border-radius: 20px;
+      border: 1px solid var(--border);
+      padding: 40px;
+      animation: fadeInUp 0.5s ease-out;
+    }
+
+    /* Rule toggles to show tab target content without JS */
+    #tab1:checked ~ .tabs-nav label[for="tab1"],
+    #tab2:checked ~ .tabs-nav label[for="tab2"],
+    #tab3:checked ~ .tabs-nav label[for="tab3"] {
+      background-color: var(--primary);
+      color: var(--white);
+      border-color: var(--primary);
+      box-shadow: var(--shadow-sm);
+    }
+
+    #tab1:checked ~ .tabs-content-wrapper #content1,
+    #tab2:checked ~ .tabs-content-wrapper #content2,
+    #tab3:checked ~ .tabs-content-wrapper #content3 {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .tab-grid-inner {
+      display: grid;
+      grid-template-columns: 1.2fr 1fr;
+      gap: 32px;
+      align-items: center;
+    }
+
+    /* FOOTER */
+    .main-footer {
+      background-color: var(--dark);
+      color: #94a3b8;
+      font-size: 14px;
+      border-top: 1px solid #334155;
+    }
+
+    .footer-upper {
+      padding: 64px 0;
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr;
+      gap: 48px;
+    }
+
+    .footer-pillar {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .footer-logo-block {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .footer-logo-img {
+      width: 38px;
+      height: 38px;
+      border-radius: 8px;
+      border: 1px solid #334155;
+    }
+
+    .footer-logo-text h3 {
+      font-family: var(--font-display);
+      color: var(--white);
+      font-size: 16px;
+      font-weight: 700;
+    }
+
+    .footer-subtitle {
+      font-size: 9px;
+      color: var(--primary);
+      text-transform: uppercase;
+      font-family: var(--font-mono);
+      font-weight: 700;
+      letter-spacing: 0.1em;
+    }
+
+    .footer-desc {
+      font-size: 13px;
+      line-height: 1.6;
+    }
+
+    .footer-social-links {
+      display: flex;
+      gap: 12px;
+      margin-top: 6px;
+    }
+
+    .social-btn {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      background-color: #1e293b;
+      border: 1px solid #334155;
+      color: #cbd5e1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 14px;
+      transition: var(--transition);
+    }
+
+    .social-btn:hover {
+      background-color: var(--primary);
+      color: var(--white);
+      border-color: var(--primary);
+    }
+
+    .footer-pillar-title {
+      font-family: var(--font-display);
+      color: var(--white);
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      font-weight: 700;
+    }
+
+    .footer-links {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .footer-link-btn {
+      color: #94a3b8;
+      text-align: left;
+      font-size: 13.5px;
+      transition: var(--transition);
+      cursor: pointer;
+      background: none;
+      border: none;
+      display: inline-block;
+    }
+
+    .footer-link-btn:hover {
+      color: var(--primary-light);
+      padding-left: 4px;
+    }
+
+    .academic-footer-bar {
+      background-color: #020617;
+      padding: 24px 0;
+      border-top: 1px solid #1e293b;
+    }
+
+    .academic-footer-bar .container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+
+    .academic-signature {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .academic-sig-details p {
+      color: #cbd5e1;
+      font-weight: 500;
+      font-size: 12.5px;
+    }
+
+    .academic-sig-details span {
+      color: var(--slate-light);
+      font-size: 9.5px;
+      text-transform: uppercase;
+      font-family: var(--font-mono);
+    }
+
+    .index-no-badge-large {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      background-color: rgba(5,150,105,0.08);
+      border: 1px solid #047857;
+      padding: 8px 16px;
+      border-radius: 12px;
+      font-family: var(--font-mono);
+      font-size: 12px;
+    }
+
+    .index-no-badge-large strong {
+      color: var(--white);
+    }
+
+    .footer-bottom {
+      background-color: #020617;
+      text-align: center;
+      padding: 16px 0;
+      font-size: 10px;
+      color: #475569;
+      border-top: 1px solid rgba(255, 255, 255, 0.03);
+    }
+
+    /* RESPONSIVE DESIGN FOR GALLERY SCREEN */
+    @media (max-width: 991px) {
+      .nav-toggle-label {
+        display: flex;
+      }
+
+      .nav-links {
+        position: absolute;
+        top: 80px;
+        left: 0;
+        width: 100%;
+        background-color: var(--white);
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 16px 24px;
+        border-bottom: 1px solid var(--border);
+        box-shadow: var(--shadow-lg);
+        display: none;
+      }
+
+      .nav-links .nav-item {
+        width: 100%;
+        padding: 12px;
+      }
+
+      .nav-links .nav-btn {
+        width: calc(100% - 24px);
+        margin: 12px;
+        justify-content: center;
+      }
+
+      .nav-toggle:checked ~ .nav-links {
+        display: flex;
+      }
+
+      .bento-grid {
+        grid-template-columns: repeat(2, 1fr);
+        grid-auto-rows: 200px;
+      }
+
+      .tab-grid-inner {
+        grid-template-columns: 1fr;
+        gap: 24px;
+      }
+
+      .footer-grid {
+        grid-template-columns: 1fr;
+        gap: 32px;
+      }
+    }
+
+    @media (max-width: 576px) {
+      .bento-grid {
+        grid-template-columns: 1fr;
+        grid-auto-rows: 240px;
+      }
+      .span-w2 {
+        grid-column: span 1;
+      }
+      .span-h2 {
+        grid-row: span 1;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ACADEMIC GRADING SYSTEM SUBMISSION BANNER (TTU REQUIRED) -->
+  <div class="academic-banner" id="ttu-submission-banner">
+    <div class="container">
+      <div class="academic-meta">
+        <strong>🎓 Takoradi Technical University</strong>
+        <span>Faculty of Applied Sciences</span>
+        <span>Computer Science Department</span>
+      </div>
+      <div>
+        Student: <strong>Samuel Korankye</strong> | 
+        Index: <span class="index-no-badge">TTU-CS-2026-0428</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- STICKY TOP HEADER & NAVIGATION BAR -->
+  <header class="main-header" id="main-header">
+    <div class="container nav-container">
+      
+      <!-- Logo Anchor Link -->
+      <a href="../index.html" class="logo-block">
+        <img src="../images/logo.jpg" alt="KCTF NGO Logo" class="logo-img">
+        <div class="logo-text">
+          <h2>KCTF</h2>
+          <p class="logo-subtitle">Korankye Community Transformation Foundation</p>
+        </div>
+      </a>
+
+      <!-- CSS Checkbox Trick for Fully Responsive Mobile Collapsible Navbar (Zero JS!) -->
+      <input type="checkbox" id="nav-toggle" class="nav-toggle">
+      <label for="nav-toggle" class="nav-toggle-label">
+        <span></span>
+        <span></span>
+        <span></span>
+      </label>
+
+      <!-- Standard HTML links navigation -->
+      <nav class="nav-links">
+        <a href="../index.html" class="nav-item">Home</a>
+        <a href="about.html" class="nav-item">About Us</a>
+        <a href="projects.html" class="nav-item">Projects</a>
+        <a href="gallery.html" class="nav-item active">Gallery</a>
+        <a href="volunteer.html" class="nav-item">Volunteer</a>
+        <a href="donate.html" class="nav-item">Donate</a>
+        <a href="contact.html" class="nav-item">Contact</a>
+        <a href="donate.html" class="nav-btn">
+          <span class="support-icon">💧</span>
+          Support KCTF
+        </a>
+      </nav>
+
+    </div>
+  </header>
+
+  <!-- GALLERY HEADER -->
+  <section class="page-header-section" id="gallery-front-banner">
+    <div class="container p-header-container">
+      <span class="section-title-small">Impact Visualizer</span>
+      <h1 class="page-title">Photo Documentation Library</h1>
+      <div class="section-divider"></div>
+      <p class="page-subtitle">Real physical snapshots capturing KCTF boreholes, water pipelines, market toilets, agricultural harvesting, and regional communities.</p>
+    </div>
+  </section>
+
+  <!-- THE BENTO GALLERY (DEMONSTRATES PROFESSIONAL CSS GRID FOR NGO PROJECTS) -->
+  <section class="gallery-grid-section" id="photos-bento-grid">
+    <div class="container">
+      <div class="bento-grid">
+        
+        <!-- ITEM 1 (Large Bento Element) -->
+        <div class="gallery-item span-w2 span-h2">
+          <img src="https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?auto=format&fit=crop&q=80&w=800" alt="Borehole drilling works by Samuel Korankye">
+          <div class="gallery-overlay">
+            <span class="gallery-tag">Infrastructure</span>
+            <h4 class="gallery-heading">Constructing Central Aquifer Drilling lines</h4>
+            <p class="gallery-desc">Hydrotech survey teams casing drilling sockets to harvest underlying pure crystalline water streams.</p>
+          </div>
+        </div>
+
+        <!-- ITEM 2 -->
+        <div class="gallery-item">
+          <img src="https://images.unsplash.com/photo-1509062522246-3755977927d7?auto=format&fit=crop&q=80&w=800" alt="Environmental hygiene classes in school">
+          <div class="gallery-overlay">
+            <span class="gallery-tag">WASH Education</span>
+            <h4 class="gallery-heading">Primary Hygiene Lessons</h4>
+            <p class="gallery-desc">Teaching bacteria cell structures directly in classrooms.</p>
+          </div>
+        </div>
+
+        <!-- ITEM 3 -->
+        <div class="gallery-item">
+          <img src="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&q=80&w=800" alt="Female agricultural farm layout in Ghana">
+          <div class="gallery-overlay">
+            <span class="gallery-tag">Agro-Cooperative</span>
+            <h4 class="gallery-heading">Gravity Drip Piping lines</h4>
+            <p class="gallery-desc">Delivering controlled groundwater loops to family-held crops.</p>
+          </div>
+        </div>
+
+        <!-- ITEM 4 -->
+        <div class="gallery-item span-w2">
+          <img src="https://images.unsplash.com/photo-1508514177221-188b1cf16e9d?auto=format&fit=crop&q=80&w=800" alt="Solar arrays powering borehole pump">
+          <div class="gallery-overlay">
+            <span class="gallery-tag">Alternative Energy</span>
+            <h4 class="gallery-heading">Solar arrays in Anaji community</h4>
+            <p class="gallery-desc">Using sustainable photovoltaic panels to power high-yield water casings without diesel noise.</p>
+          </div>
+        </div>
+
+        <!-- ITEM 5 -->
+        <div class="gallery-item">
+          <img src="https://images.unsplash.com/photo-1531482615713-2afd69097998?auto=format&fit=crop&q=80&w=800" alt="Community meeting with Samuel Korankye">
+          <div class="gallery-overlay">
+            <span class="gallery-tag">Mobilization</span>
+            <h4 class="gallery-heading">Village Senate Consent</h4>
+            <p class="gallery-desc">Elders aligning water tariff guidelines collectively with our founder.</p>
+          </div>
+        </div>
+
+        <!-- ITEM 6 -->
+        <div class="gallery-item">
+          <img src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&q=80&w=800" alt="Water quality screening">
+          <div class="gallery-overlay">
+            <span class="gallery-tag">Quality Control</span>
+            <h4 class="gallery-heading">Bacterial Lab screening</h4>
+            <p class="gallery-desc">Strict E. Coli tests executed inside TTU laboratories beforehand.</p>
+          </div>
+        </div>
+
+        <!-- ITEM 7 (Wide Bento element at the bottom) -->
+        <div class="gallery-item span-w2">
+          <img src="https://images.unsplash.com/photo-1541963463532-d68292c34b19?auto=format&fit=crop&q=80&w=800" alt="Children gathering safe water">
+          <div class="gallery-overlay">
+            <span class="gallery-tag">Restoration</span>
+            <h4 class="gallery-heading">Joyful kids accessing pure tap water</h4>
+            <p class="gallery-desc">Potable tap assemblies completely rid children of infectious swamp collection runs.</p>
+          </div>
+        </div>
+
+        <!-- ITEM 8 -->
+        <div class="gallery-item">
+          <img src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&q=80&w=800" alt="Mason doing bricklaying of toilets">
+          <div class="gallery-overlay">
+            <span class="gallery-tag">Sanitation</span>
+            <h4 class="gallery-heading">Plastering Compost Hub</h4>
+            <p class="gallery-desc">Using regional sand block materials to house ecological bio-bins.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- PURE CSS INTERACTIVE CATEGORY TABS (ZERO JS DEMONSTRATION OF ADVANCED CSS SELECTION) -->
+  <section class="tabs-section" id="interactive-categories">
+    <div class="container tabs-container">
+      <div class="section-header-center" style="margin-bottom: 32px">
+        <span class="section-title-small">Operational Chronology</span>
+        <h2 class="page-title" style="font-size:26px;">History Milestones (Interactive Slide Logs)</h2>
+        <div class="section-divider"></div>
+        <p class="gallery-desc" style="color:var(--slate); font-size:13.5px; max-width:500px; text-align:center">Click on the buttons below to switch historical perspectives in real-time. Created strictly using CSS peer selectors.</p>
+      </div>
+
+      <!-- Pure CSS Tabs Structure -->
+      <input type="radio" name="gallery-tab" id="tab1" class="tabs-inputs" checked>
+      <input type="radio" name="gallery-tab" id="tab2" class="tabs-inputs">
+      <input type="radio" name="gallery-tab" id="tab3" class="tabs-inputs">
+
+      <!-- Navigation labels -->
+      <header class="tabs-nav">
+        <label for="tab1" class="tab-label">🌟 Stage 1: Genesis (2024)</label>
+        <label for="tab2" class="tab-label">⚡ Stage 2: Scaling (2025)</label>
+        <label for="tab3" class="tab-label">🌍 Stage 3: Future Vision (2026+)</label>
+      </header>
+
+      <!-- Tab panels wrapper -->
+      <div class="tabs-content-wrapper">
+        
+        <!-- PANEL 1 -->
+        <article class="tab-content" id="content1">
+          <div class="tab-grid-inner">
+            <div>
+              <h3 class="gallery-heading" style="color:var(--dark); font-size:22px; margin-bottom: 12px">Student Initiative & Sand-filter Prototyping</h3>
+              <p class="gallery-desc" style="color:var(--slate); font-size:14px; line-height: 1.6">
+                Under the technical guidance of founder Samuel Korankye, the initiative started as a group of computer science and environmental engineering students at Takoradi Technical University. We gathered resources to cast 50 concrete bio-sand cylinders, carrying clean drinking sources to schools immediately bordering outer Takoradi.
+              </p>
+            </div>
+            <div style="aspect-ratio:3/2; overflow:hidden; border-radius:12px">
+              <img src="https://images.unsplash.com/photo-1531482615713-2afd69097998?auto=format&fit=crop&q=80&w=400" alt="Sand-filter models" style="width:100%; height:100%; object-fit:cover">
+            </div>
+          </div>
+        </article>
+
+        <!-- PANEL 2 -->
+        <article class="tab-content" id="content2">
+          <div class="tab-grid-inner">
+            <div>
+              <h3 class="gallery-heading" style="color:var(--dark); font-size:22px; margin-bottom: 12px">Solar Deep-Casing Wells Commissioned</h3>
+              <p class="gallery-desc" style="color:var(--slate); font-size:14px; line-height: 1.6">
+                Integrating efficient solar deep mechanical well installations which can reach untouched deep aquifers (80m deep). This successfully bypasses contaminated rain runoff grids, completely eradicating bacterial diseases within our partner villages.
+              </p>
+            </div>
+            <div style="aspect-ratio:3/2; overflow:hidden; border-radius:12px">
+              <img src="https://images.unsplash.com/photo-1508514177221-188b1cf16e9d?auto=format&fit=crop&q=80&w=400" alt="Borehole piping" style="width:100%; height:100%; object-fit:cover">
+            </div>
+          </div>
+        </article>
+
+        <!-- PANEL 3 -->
+        <article class="tab-content" id="content3">
+          <div class="tab-grid-inner">
+            <div>
+              <h3 class="gallery-heading" style="color:var(--dark); font-size:22px; margin-bottom: 12px">Integrated Green Agricultural Co-ops</h3>
+              <p class="gallery-desc" style="color:var(--slate); font-size:14px; line-height: 1.6">
+                Setting up direct piping systems linked with organic crop yards. This allows mothers to fertilize agricultural yields utilizing the sanitary compost generated from our closed composting restrooms, multiplying economic returns.
+              </p>
+            </div>
+            <div style="aspect-ratio:3/2; overflow:hidden; border-radius:12px">
+              <img src="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&q=80&w=400" alt="Agro-culture co-ops" style="width:100%; height:100%; object-fit:cover">
+            </div>
+          </div>
+        </article>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="main-footer" id="main-footer">
+    <div class="container footer-upper">
+      <div class="footer-grid">
+        
+        <!-- NGO Pillar -->
+        <div class="footer-pillar">
+          <div class="footer-logo-block">
+            <img src="../images/logo.jpg" alt="KCTF logo" class="footer-logo-img">
+            <div class="footer-logo-text">
+              <h3>KCTF NGO</h3>
+              <p class="footer-subtitle">Sustainable Water Integration</p>
+            </div>
+          </div>
+          <p class="footer-desc">
+            Korankye Community Transformation Foundation (KCTF) is an environmental NGO piloting professional Community Development and Water & Clean WASH infrastructure in West Africa.
+          </p>
+          <div class="footer-social-links">
+            <a href="#facebook" class="social-btn" aria-label="Facebook">FB</a>
+            <a href="#twitter" class="social-btn" aria-label="Twitter">TW</a>
+            <a href="#linkedin" class="social-btn" aria-label="LinkedIn">LN</a>
+          </div>
+        </div>
+
+        <!-- Links Pillar 1 -->
+        <div class="footer-pillar">
+          <h4 class="footer-pillar-title">Navigation Maps</h4>
+          <nav class="footer-links">
+            <a href="../index.html" class="footer-link-btn">Home Page</a>
+            <a href="about.html" class="footer-link-btn">About Our Vision</a>
+            <a href="projects.html" class="footer-link-btn">Active Programs</a>
+            <a href="gallery.html" class="footer-link-btn">Impact Gallery</a>
+          </nav>
+        </div>
+
+        <!-- Links Pillar 2 -->
+        <div class="footer-pillar">
+          <h4 class="footer-pillar-title">Action Registries</h4>
+          <nav class="footer-links">
+            <a href="volunteer.html" class="footer-link-btn">Become a Volunteer</a>
+            <a href="donate.html" class="footer-link-btn">Donate / Gift Support</a>
+            <a href="contact.html" class="footer-link-btn">Contact Desk</a>
+          </nav>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- ACADEMIC SUBMISSION SIGNATURE STRIP (TTU REQUIRED BAR) -->
+    <div class="academic-footer-bar" id="grading-footer-bar">
+      <div class="container">
+        <div class="academic-signature">
+          <span style="font-size: 24px; line-height: 1;">🎓</span>
+          <div class="academic-sig-details">
+            <p>Takoradi Technical University (TTU), Western Region, Ghana</p>
+            <span>Computer Science Department — Mid-Sem Exam Architecture Website</span>
+          </div>
+        </div>
+        
+        <div class="index-no-badge-large">
+          <span>Candidate:</span>
+          <strong>Samuel Korankye</strong>
+          <span style="color: #475569;">|</span>
+          <span>Index File:</span>
+          <strong>TTU-CS-2026-0428</strong>
+        </div>
+      </div>
+    </div>
+
+    <!-- Copyright block -->
+    <div class="footer-bottom">
+      <div class="container">
+        <p>© 2026 Korankye Community Transformation Foundation (KCTF) NGO. Developed entirely for Academic Evaluation.</p>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>

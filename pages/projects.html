@@ -1,0 +1,1110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Our Projects - Korankye Community Transformation Foundation</title>
+  <!-- Google Fonts Connection -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  
+  <style>
+    /* CSS VARIABLES & RESET */
+    :root {
+      --primary: #059669;
+      --primary-hover: #047857;
+      --primary-light: #ecfdf5;
+      --secondary: #2563eb;
+      --secondary-light: #eff6ff;
+      --secondary-hover: #1d4ed8;
+      --dark: #0f172a;
+      --dark-light: #1e293b;
+      --slate: #475569;
+      --slate-light: #94a3b8;
+      --light: #f8fafc;
+      --border: #e2e8f0;
+      --white: #ffffff;
+      
+      --font-display: "Space Grotesk", sans-serif;
+      --font-sans: "Inter", sans-serif;
+      --font-mono: "JetBrains Mono", monospace;
+      
+      --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+      --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+      --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+      --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+      --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: var(--font-sans);
+      background-color: var(--light);
+      color: var(--dark);
+      line-height: 1.6;
+      overflow-x: hidden;
+      scroll-behavior: smooth;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    ul, ol {
+      list-style: none;
+    }
+
+    img {
+      max-width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    /* MINI ANIMS */
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); opacity: 1; }
+      50% { transform: scale(1.05); opacity: 0.82; }
+    }
+    
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ACADEMIC BANNER STYLE */
+    .academic-banner {
+      background-color: var(--dark);
+      color: #cbd5e1;
+      font-family: var(--font-mono);
+      font-size: 11px;
+      padding: 8px 0;
+      border-bottom: 1px solid #334155;
+    }
+
+    .academic-banner .container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .academic-meta {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .academic-meta span {
+      background-color: #1e293b;
+      padding: 2px 8px;
+      border-radius: 4px;
+      border: 1px solid #475569;
+      color: #38bdf8;
+    }
+
+    .index-no-badge {
+      background-color: #064e3b !important;
+      color: #34d399 !important;
+      border-color: #047857 !important;
+      font-weight: bold;
+    }
+
+    /* HEADER & MAIN NAVIGATION BAR */
+    .main-header {
+      background-color: var(--white);
+      border-bottom: 1px solid var(--border);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .nav-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      height: 80px;
+    }
+
+    .logo-block {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .logo-img {
+      width: 46px;
+      height: 46px;
+      border-radius: 10px;
+      object-fit: cover;
+      border: 1px solid var(--primary-light);
+      box-shadow: inset 0 2px 4px rgba(0,0,0,0.06);
+    }
+
+    .logo-text h2 {
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: 18px;
+      color: var(--dark);
+      letter-spacing: -0.025em;
+      line-height: 1.1;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .logo-text h2::after {
+      content: "";
+      width: 6px;
+      height: 6px;
+      background-color: var(--primary);
+      border-radius: 50%;
+      display: inline-block;
+    }
+
+    .logo-subtitle {
+      font-size: 10px;
+      color: var(--slate);
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-top: 1px;
+    }
+
+    /* Desktop Links list */
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .nav-item {
+      font-size: 13.5px;
+      font-weight: 500;
+      color: var(--slate);
+      padding: 10px 14px;
+      border-radius: 8px;
+      transition: var(--transition);
+    }
+
+    .nav-item:hover {
+      color: var(--primary);
+      background-color: var(--light);
+    }
+
+    .nav-item.active {
+      color: var(--primary-hover);
+      background-color: var(--primary-light);
+      font-weight: 600;
+    }
+
+    /* Support Button in header */
+    .nav-btn {
+      background-color: var(--primary);
+      color: var(--white);
+      font-weight: 600;
+      padding: 10px 18px;
+      border-radius: 8px;
+      margin-left: 10px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      transition: var(--transition);
+      box-shadow: var(--shadow-sm);
+    }
+
+    .nav-btn:hover {
+      background-color: var(--primary-hover);
+      transform: translateY(-1px);
+    }
+
+    .support-icon {
+      animation: pulse 2s infinite ease-in-out;
+    }
+
+    /* Responsive navigation toggle trick using pure CSS */
+    .nav-toggle {
+      display: none;
+    }
+
+    .nav-toggle-label {
+      display: none;
+      flex-direction: column;
+      justify-content: space-between;
+      width: 24px;
+      height: 18px;
+      cursor: pointer;
+    }
+
+    .nav-toggle-label span {
+      display: block;
+      height: 2.5px;
+      width: 100%;
+      background-color: var(--dark);
+      border-radius: 2px;
+      transition: var(--transition);
+    }
+
+    /* PAGE HEADER Section */
+    .page-header-section {
+      background-color: var(--white);
+      border-bottom: 1px solid var(--border);
+      padding: 60px 0;
+      animation: fadeInUp 0.5s ease-out;
+    }
+
+    .p-header-container {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      align-items: center;
+      text-align: center;
+    }
+
+    .page-title {
+      font-family: var(--font-display);
+      font-size: 40px;
+      font-weight: 700;
+      color: var(--dark);
+      letter-spacing: -0.027em;
+    }
+
+    .page-subtitle {
+      font-size: 16px;
+      color: var(--slate);
+      max-width: 600px;
+    }
+
+    .section-title-small {
+      font-size: 13px;
+      text-transform: uppercase;
+      font-family: var(--font-mono);
+      color: var(--primary);
+      font-weight: 600;
+      letter-spacing: 0.05em;
+    }
+
+    .section-divider {
+      width: 60px;
+      height: 4px;
+      background-color: var(--primary);
+      border-radius: 2px;
+      margin: 4px auto 0 auto;
+    }
+
+    /* SIX PROJECTS GRID SECTION */
+    .projects-grid-section {
+      padding: 80px 0;
+    }
+
+    .grid-three-cols {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 32px;
+    }
+
+    .project-card {
+      background-color: var(--white);
+      border-radius: 16px;
+      overflow: hidden;
+      border: 1px solid var(--border);
+      box-shadow: var(--shadow-sm);
+      transition: var(--transition);
+      display: flex;
+      flex-direction: column;
+    }
+
+    .project-card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-lg);
+    }
+
+    .proj-image-frame {
+      aspect-ratio: 16/10;
+      position: relative;
+      overflow: hidden;
+      background-color: #cbd5e1;
+    }
+
+    .proj-image-frame img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: var(--transition);
+    }
+
+    .project-card:hover .proj-image-frame img {
+      transform: scale(1.04);
+    }
+
+    .status-badge {
+      position: absolute;
+      top: 16px;
+      right: 16px;
+      background-color: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(4px);
+      color: var(--primary-hover);
+      padding: 4px 12px;
+      border-radius: 9999px;
+      font-size: 10px;
+      font-weight: 700;
+      text-transform: uppercase;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .status-completed {
+      color: var(--primary-hover);
+      background-color: var(--primary-light);
+    }
+
+    .status-ongoing {
+      color: #b45309;
+      background-color: #fef3c7;
+    }
+
+    .status-planned {
+      color: #1e3a8a;
+      background-color: #eff6ff;
+    }
+
+    .proj-content {
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      flex-grow: 1;
+    }
+
+    .proj-category {
+      font-family: var(--font-mono);
+      font-size: 10px;
+      font-weight: 700;
+      color: var(--primary);
+      text-transform: uppercase;
+      background-color: var(--primary-light);
+      padding: 2px 8px;
+      border-radius: 4px;
+      align-self: flex-start;
+    }
+
+    .proj-title {
+      font-family: var(--font-display);
+      font-size: 19px;
+      font-weight: 700;
+      color: var(--dark);
+      line-height: 1.3;
+    }
+
+    .proj-desc {
+      font-size: 13.5px;
+      color: var(--slate);
+      line-height: 1.5;
+    }
+
+    .proj-meta-table {
+      border-top: 1px solid var(--border);
+      padding-top: 16px;
+      margin-top: auto;
+      font-size: 12px;
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    /* MAP INFRASTRUCTURE CALLOUT */
+    .geography-section {
+      padding: 80px 0;
+      background-color: var(--white);
+      border-top: 1px solid var(--border);
+    }
+
+    .geo-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.2fr;
+      gap: 48px;
+      align-items: center;
+    }
+
+    .geo-text {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .geo-list {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .geo-item {
+      display: flex;
+      gap: 12px;
+      font-size: 14px;
+      color: var(--slate);
+    }
+
+    .geo-bullet {
+      background-color: var(--primary-light);
+      color: var(--primary-hover);
+      font-weight: bold;
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    /* Simulated Map / Graphic of Active Districts */
+    .simulated-map {
+      background-color: var(--light);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 32px;
+      box-shadow: var(--shadow);
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .map-header {
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 12px;
+    }
+
+    .map-title {
+      font-family: var(--font-display);
+      font-size: 18px;
+      font-weight: bold;
+      color: var(--dark);
+    }
+
+    .map-subtitle {
+      font-size: 11.5px;
+      color: var(--slate);
+    }
+
+    .district-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+
+    .district-node {
+      background-color: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 12px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .node-indicator {
+      width: 8px;
+      height: 8px;
+      background-color: var(--primary);
+      border-radius: 50%;
+    }
+
+    .node-title {
+      font-size: 13px;
+      font-weight: bold;
+      color: var(--dark);
+    }
+
+    .node-desc {
+      font-size: 10.5px;
+      color: var(--slate-light);
+    }
+
+    /* FOOTER */
+    .main-footer {
+      background-color: var(--dark);
+      color: #94a3b8;
+      font-size: 14px;
+      border-top: 1px solid #334155;
+    }
+
+    .footer-upper {
+      padding: 64px 0;
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr;
+      gap: 48px;
+    }
+
+    .footer-pillar {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .footer-logo-block {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .footer-logo-img {
+      width: 38px;
+      height: 38px;
+      border-radius: 8px;
+      border: 1px solid #334155;
+    }
+
+    .footer-logo-text h3 {
+      font-family: var(--font-display);
+      color: var(--white);
+      font-size: 16px;
+      font-weight: 700;
+    }
+
+    .footer-subtitle {
+      font-size: 9px;
+      color: var(--primary);
+      text-transform: uppercase;
+      font-family: var(--font-mono);
+      font-weight: 700;
+      letter-spacing: 0.1em;
+    }
+
+    .footer-desc {
+      font-size: 13px;
+      line-height: 1.6;
+    }
+
+    .footer-social-links {
+      display: flex;
+      gap: 12px;
+      margin-top: 6px;
+    }
+
+    .social-btn {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      background-color: #1e293b;
+      border: 1px solid #334155;
+      color: #cbd5e1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 14px;
+      transition: var(--transition);
+    }
+
+    .social-btn:hover {
+      background-color: var(--primary);
+      color: var(--white);
+      border-color: var(--primary);
+    }
+
+    .footer-pillar-title {
+      font-family: var(--font-display);
+      color: var(--white);
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      font-weight: 700;
+    }
+
+    .footer-links {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .footer-link-btn {
+      color: #94a3b8;
+      text-align: left;
+      font-size: 13.5px;
+      transition: var(--transition);
+      cursor: pointer;
+      background: none;
+      border: none;
+      display: inline-block;
+    }
+
+    .footer-link-btn:hover {
+      color: var(--primary-light);
+      padding-left: 4px;
+    }
+
+    .academic-footer-bar {
+      background-color: #020617;
+      padding: 24px 0;
+      border-top: 1px solid #1e293b;
+    }
+
+    .academic-footer-bar .container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+
+    .academic-signature {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .academic-sig-details p {
+      color: #cbd5e1;
+      font-weight: 500;
+      font-size: 12.5px;
+    }
+
+    .academic-sig-details span {
+      color: var(--slate-light);
+      font-size: 9.5px;
+      text-transform: uppercase;
+      font-family: var(--font-mono);
+    }
+
+    .index-no-badge-large {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      background-color: rgba(5,150,105,0.08);
+      border: 1px solid #047857;
+      padding: 8px 16px;
+      border-radius: 12px;
+      font-family: var(--font-mono);
+      font-size: 12px;
+    }
+
+    .index-no-badge-large strong {
+      color: var(--white);
+    }
+
+    .footer-bottom {
+      background-color: #020617;
+      text-align: center;
+      padding: 16px 0;
+      font-size: 10px;
+      color: #475569;
+      border-top: 1px solid rgba(255, 255, 255, 0.03);
+    }
+
+    /* RESPONSIVE DESIGN FOR PROJECTS SCREEN */
+    @media (max-width: 991px) {
+      .nav-toggle-label {
+        display: flex;
+      }
+
+      .nav-links {
+        position: absolute;
+        top: 80px;
+        left: 0;
+        width: 100%;
+        background-color: var(--white);
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 16px 24px;
+        border-bottom: 1px solid var(--border);
+        box-shadow: var(--shadow-lg);
+        display: none;
+      }
+
+      .nav-links .nav-item {
+        width: 100%;
+        padding: 12px;
+      }
+
+      .nav-links .nav-btn {
+        width: calc(100% - 24px);
+        margin: 12px;
+        justify-content: center;
+      }
+
+      .nav-toggle:checked ~ .nav-links {
+        display: flex;
+      }
+
+      .grid-three-cols {
+        grid-template-columns: 1fr 1fr;
+        gap: 24px;
+      }
+
+      .geo-grid {
+        grid-template-columns: 1fr;
+        gap: 40px;
+      }
+
+      .footer-grid {
+        grid-template-columns: 1fr;
+        gap: 32px;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .grid-three-cols {
+        grid-template-columns: 1fr;
+        gap: 24px;
+      }
+      .district-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ACADEMIC GRADING SYSTEM SUBMISSION BANNER (TTU REQUIRED) -->
+  <div class="academic-banner" id="ttu-submission-banner">
+    <div class="container">
+      <div class="academic-meta">
+        <strong>🎓 Takoradi Technical University</strong>
+        <span>Faculty of Applied Sciences</span>
+        <span>Computer Science Department</span>
+      </div>
+      <div>
+        Student: <strong>Samuel Korankye</strong> | 
+        Index: <span class="index-no-badge">TTU-CS-2026-0428</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- STICKY TOP HEADER & NAVIGATION BAR -->
+  <header class="main-header" id="main-header">
+    <div class="container nav-container">
+      
+      <!-- Logo Anchor Link -->
+      <a href="../index.html" class="logo-block">
+        <img src="../images/logo.jpg" alt="KCTF NGO Logo" class="logo-img">
+        <div class="logo-text">
+          <h2>KCTF</h2>
+          <p class="logo-subtitle">Korankye Community Transformation Foundation</p>
+        </div>
+      </a>
+
+      <!-- CSS Checkbox Trick for Fully Responsive Mobile Collapsible Navbar (Zero JS!) -->
+      <input type="checkbox" id="nav-toggle" class="nav-toggle">
+      <label for="nav-toggle" class="nav-toggle-label">
+        <span></span>
+        <span></span>
+        <span></span>
+      </label>
+
+      <!-- Standard HTML links navigation -->
+      <nav class="nav-links">
+        <a href="../index.html" class="nav-item">Home</a>
+        <a href="about.html" class="nav-item">About Us</a>
+        <a href="projects.html" class="nav-item active">Projects</a>
+        <a href="gallery.html" class="nav-item">Gallery</a>
+        <a href="volunteer.html" class="nav-item">Volunteer</a>
+        <a href="donate.html" class="nav-item">Donate</a>
+        <a href="contact.html" class="nav-item">Contact</a>
+        <a href="donate.html" class="nav-btn">
+          <span class="support-icon">💧</span>
+          Support KCTF
+        </a>
+      </nav>
+
+    </div>
+  </header>
+
+  <!-- PROJECTS SEARCH/HEADER -->
+  <section class="page-header-section" id="projects-landing-header">
+    <div class="container p-header-container">
+      <span class="section-title-small">Operational Footprint</span>
+      <h1 class="page-title">Environmental Projects & Deliverables</h1>
+      <div class="section-divider"></div>
+      <p class="page-subtitle">A detailed showcase of our six core regional interventions addressing water security, sustainable sanitation, and female-led agrarian cooperative projects.</p>
+    </div>
+  </section>
+
+  <!-- THE SIX CRITICAL PROJECTS LIST -->
+  <section class="projects-grid-section" id="active-projects-grid">
+    <div class="container">
+      <div class="grid-three-cols">
+        
+        <!-- PROJECT 1 -->
+        <article class="project-card">
+          <figure class="proj-image-frame">
+            <img src="https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?auto=format&fit=crop&q=80&w=600" alt="Borehole Well completed in Ghana">
+            <span class="status-badge status-completed">Completed</span>
+          </figure>
+          <div class="proj-content">
+            <span class="proj-category">Water & WASH Linkage</span>
+            <h3 class="proj-title">Anaji Clean Water Borehole & Filtration Hub</h3>
+            <p class="proj-desc">
+              Installing deep solar pumping rigs paired with multi-layer sand filter basins to replace creek harvesting for schoolchildren.
+            </p>
+            <div class="proj-meta-table">
+              <p>📍 <strong>Location:</strong> Anaji, outer Takoradi District</p>
+              <p>📈 <strong>Impact:</strong> Yields 15,000L daily of biological clear water, serving 2,500+ pupils.</p>
+            </div>
+          </div>
+        </article>
+
+        <!-- PROJECT 2 -->
+        <article class="project-card">
+          <figure class="proj-image-frame">
+            <img src="https://images.unsplash.com/photo-1502082553048-f009c37129b9?auto=format&fit=crop&q=80&w=600" alt="Closed Composting Sanitation Complex under construction">
+            <span class="status-badge status-ongoing">Ongoing</span>
+          </figure>
+          <div class="proj-content">
+            <span class="proj-category">Hygienic Sanitation</span>
+            <h3 class="proj-title">Takoradi Market Circle Composting Complex</h3>
+            <p class="proj-desc">
+              Constructing an eco-friendly composting public toilet with a rainwater collectors to prevent water-borne disease outbreaks in busy trading centers.
+            </p>
+            <div class="proj-meta-table">
+              <p>📍 <strong>Location:</strong> Takoradi Central Market Circle</p>
+              <p>📈 <strong>Impact:</strong> Designed to serve 800+ micro-merchants daily with bio-waste capture.</p>
+            </div>
+          </div>
+        </article>
+
+        <!-- PROJECT 3 -->
+        <article class="project-card">
+          <figure class="proj-image-frame">
+            <img src="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&q=80&w=600" alt="Agricultural drip integration lines in Kwesimintsim">
+            <span class="status-badge status-completed">Completed</span>
+          </figure>
+          <div class="proj-content">
+            <span class="proj-category">Agro-Cooperative</span>
+            <h3 class="proj-title">Kwesimintsim Female Farmers Drip Pipeline</h3>
+            <p class="proj-desc">
+              Channeling shallow groundwater streams to modular gravity-fed drip hoses, securing regional vegetable farmlands.
+            </p>
+            <div class="proj-meta-table">
+              <p>📍 <strong>Location:</strong> Kwesimintsim Outskirts</p>
+              <p>📈 <strong>Impact:</strong> Safeguards active cropping yields for 180 female-run cooperative plots.</p>
+            </div>
+          </div>
+        </article>
+
+        <!-- PROJECT 4 -->
+        <article class="project-card">
+          <figure class="proj-image-frame">
+            <img src="https://images.unsplash.com/photo-1509062522246-3755977927d7?auto=format&fit=crop&q=80&w=600" alt="Effiakuma High Schools sanitation systems">
+            <span class="status-badge status-completed">Completed</span>
+          </figure>
+          <div class="proj-content">
+            <span class="proj-category">Hygiene & Advocacy</span>
+            <h3 class="proj-title">Effiakuma Schools WASH Action Campaign</h3>
+            <p class="proj-desc">
+              Integrating handwashing points and providing clean hygiene workshops for children to halt recurring rotavirus.
+            </p>
+            <div class="proj-meta-table">
+              <p>📍 <strong>Location:</strong> Effiakuma Municipal High Schools</p>
+              <p>📈 <strong>Impact:</strong> Set up 15 high-volume washbasins, eliminating seasonal water illnesses.</p>
+            </div>
+          </div>
+        </article>
+
+        <!-- PROJECT 5 -->
+        <article class="project-card">
+          <figure class="proj-image-frame">
+            <img src="https://images.unsplash.com/photo-1518173946687-a4c8a383392e?auto=format&fit=crop&q=80&w=600" alt="Filtration tank construction planned">
+            <span class="status-badge status-planned">Planned</span>
+          </figure>
+          <div class="proj-content">
+            <span class="proj-category">Coastal Salitration</span>
+            <h3 class="proj-title">Sekondi Beach Bio-Sand Filter Wells</h3>
+            <p class="proj-desc">
+              Building localized sand bank structures to filtrate saline and high-iron soil lagoons, ensuring domestic access.
+            </p>
+            <div class="proj-meta-table">
+              <p>📍 <strong>Location:</strong> Sekondi Fishing Beach Shorelines</p>
+              <p>📈 <strong>Impact:</strong> Will bring emergency backup freshwater reserves to 3,000 fishing households.</p>
+            </div>
+          </div>
+        </article>
+
+        <!-- PROJECT 6 -->
+        <article class="project-card">
+          <figure class="proj-image-frame">
+            <img src="https://images.unsplash.com/photo-1508514177221-188b1cf16e9d?auto=format&fit=crop&q=80&w=600" alt="Modular solar charging kiosk and water purification station">
+            <span class="status-badge status-completed">Completed</span>
+          </figure>
+          <div class="proj-content">
+            <span class="proj-category">Solar Technology</span>
+            <h3 class="proj-title">Kojokrom Solar Micro-Purification Kiosk</h3>
+            <p class="proj-desc">
+              A self-contained solar-powered vending machine treating groundwater via charcoal adsorption, managed by a local youth council.
+            </p>
+            <div class="proj-meta-table">
+              <p>📍 <strong>Location:</strong> Kojokrom Railway Station Marketplace</p>
+              <p>📈 <strong>Impact:</strong> Generates self-sustaining operational revenues while supplying cheap water.</p>
+            </div>
+          </div>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- INTERACTIVE DISTRICT FOOTPRINT MAP SHOWCASE -->
+  <section class="geography-section" id="regional-impact-mapping">
+    <div class="container geo-grid">
+      <article class="geo-text">
+        <span class="section-title-small">Mapping The Impact</span>
+        <h2 class="page-title" style="font-size:32px;">Regional Intervention Footprint</h2>
+        <div class="section-divider" style="margin:0;"></div >
+        <p class="proj-desc">
+          By strategically focusing our limited funding on central transition points (schools, key railway lines, markets), Samuel Korankye and the KCTF team maximize the geographical output of each solar casing.
+        </p>
+        
+        <div class="geo-list">
+          <div class="geo-item">
+            <span class="geo-bullet">1</span>
+            <p><strong>Western Ghana Hub:</strong> Direct field teams deployed instantly from our Takoradi HQ.</p>
+          </div>
+          <div class="geo-item">
+            <span class="geo-bullet">2</span>
+            <p><strong>District Alliances:</strong> Collaborative maintenance guarantees that zero water sites sit idle or broken.</p>
+          </div>
+        </div>
+      </article>
+
+      <!-- Simulated Beautiful District Nodes Grid -->
+      <div class="simulated-map">
+        <div class="map-header">
+          <h4 class="map-title">Active NGO Hydro-monitoring Network</h4>
+          <span class="map-subtitle">Click and visit other pages to see active registration lists</span>
+        </div>
+        
+        <div class="district-grid">
+          
+          <div class="district-node">
+            <div class="node-indicator"></div>
+            <div>
+              <h5 class="node-title">Anaji District</h5>
+              <p class="node-desc">1 Borehole, 2 Sand Filters</p>
+            </div>
+          </div>
+
+          <div class="district-node">
+            <div class="node-indicator"></div>
+            <div>
+              <h5 class="node-title">Market Central</h5>
+              <p class="node-desc">1 Composting Terminal</p>
+            </div>
+          </div>
+
+          <div class="district-node">
+            <div class="node-indicator"></div>
+            <div>
+              <h5 class="node-title">Kwesimintsim</h5>
+              <p class="node-desc">2 Irrigation Channels</p>
+            </div>
+          </div>
+
+          <div class="district-node border-green" style="border-color: var(--primary);">
+            <div class="node-indicator" style="background-color: var(--secondary);"></div>
+            <div>
+              <h5 class="node-title">Effiakuma Schools</h5>
+              <p class="node-desc">WASH Sanitation Outpost</p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="main-footer" id="main-footer">
+    <div class="container footer-upper">
+      <div class="footer-grid">
+        
+        <!-- NGO Pillar -->
+        <div class="footer-pillar">
+          <div class="footer-logo-block">
+            <img src="../images/logo.jpg" alt="KCTF logo" class="footer-logo-img">
+            <div class="footer-logo-text">
+              <h3>KCTF NGO</h3>
+              <p class="footer-subtitle">Sustainable Water Integration</p>
+            </div>
+          </div>
+          <p class="footer-desc">
+            Korankye Community Transformation Foundation (KCTF) is an environmental NGO piloting professional Community Development and Water & Clean WASH infrastructure in West Africa.
+          </p>
+          <div class="footer-social-links">
+            <a href="#facebook" class="social-btn" aria-label="Facebook">FB</a>
+            <a href="#twitter" class="social-btn" aria-label="Twitter">TW</a>
+            <a href="#linkedin" class="social-btn" aria-label="LinkedIn">LN</a>
+          </div>
+        </div>
+
+        <!-- Links Pillar 1 -->
+        <div class="footer-pillar">
+          <h4 class="footer-pillar-title">Navigation Maps</h4>
+          <nav class="footer-links">
+            <a href="../index.html" class="footer-link-btn">Home Page</a>
+            <a href="about.html" class="footer-link-btn">About Our Vision</a>
+            <a href="projects.html" class="footer-link-btn">Active Programs</a>
+            <a href="gallery.html" class="footer-link-btn">Impact Gallery</a>
+          </nav>
+        </div>
+
+        <!-- Links Pillar 2 -->
+        <div class="footer-pillar">
+          <h4 class="footer-pillar-title">Action Registries</h4>
+          <nav class="footer-links">
+            <a href="volunteer.html" class="footer-link-btn">Become a Volunteer</a>
+            <a href="donate.html" class="footer-link-btn">Donate / Gift Support</a>
+            <a href="contact.html" class="footer-link-btn">Contact Desk</a>
+          </nav>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- ACADEMIC SUBMISSION SIGNATURE STRIP (TTU REQUIRED BAR) -->
+    <div class="academic-footer-bar" id="grading-footer-bar">
+      <div class="container">
+        <div class="academic-signature">
+          <span style="font-size: 24px; line-height: 1;">🎓</span>
+          <div class="academic-sig-details">
+            <p>Takoradi Technical University (TTU), Western Region, Ghana</p>
+            <span>Computer Science Department — Mid-Sem Exam Architecture Website</span>
+          </div>
+        </div>
+        
+        <div class="index-no-badge-large">
+          <span>Candidate:</span>
+          <strong>Samuel Korankye</strong>
+          <span style="color: #475569;">|</span>
+          <span>Index File:</span>
+          <strong>TTU-CS-2026-0428</strong>
+        </div>
+      </div>
+    </div>
+
+    <!-- Copyright block -->
+    <div class="footer-bottom">
+      <div class="container">
+        <p>© 2026 Korankye Community Transformation Foundation (KCTF) NGO. Developed entirely for Academic Evaluation.</p>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>
